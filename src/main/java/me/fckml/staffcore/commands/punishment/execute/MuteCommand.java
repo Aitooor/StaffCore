@@ -61,7 +61,7 @@ public class MuteCommand extends BaseCommand {
         boolean isPublic = reason.contains(" -s");
 
         punishment.setUuid(UUID.randomUUID());
-        punishment.setType(duration <= 0 ? PunishmentType.BAN : PunishmentType.TEMPBAN);
+        punishment.setType(PunishmentType.MUTE);
         punishment.setTargetID(target.getUniqueId());
         punishment.setAddedBy((sender instanceof Player) ? ((Player) sender).getUniqueId() : null);
         punishment.setAddedReason(reason.replace(" -s", ""));
@@ -69,7 +69,7 @@ public class MuteCommand extends BaseCommand {
         punishment.setSilent(isPublic);
         punishment.setExpiration(-1);
 
-        if (punishment.getType() == PunishmentType.TEMPBAN) punishment.setExpiration(duration);
+        if (duration <= 0) punishment.setExpiration(duration);
 
         punishment.setVictimName(target.getName());
         punishment.setStaffName(sender.getName());
