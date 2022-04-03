@@ -31,7 +31,8 @@ public class UnWarnCommand extends BaseCommand {
         if (args.length < 2 && sender instanceof Player) {
             Profile profile = Profile.getProfileByUUID(((Player) sender).getUniqueId());
 
-            sender.sendMessage(CC.translate(StaffCore.getInstance().getConfigFile().getString("PUNISHMENT.UNWARN_USAGE")));
+            String message = StaffCore.getInstance().getMessageHandler().get(sender, "PUNISHMENT.UNWARN_MESSAGE");
+            sender.sendMessage(CC.translate(message));
             return;
         }
 
@@ -48,7 +49,8 @@ public class UnWarnCommand extends BaseCommand {
 
             Profile profile = Profile.getProfileByUUID(((Player) sender).getUniqueId());
 
-            sender.sendMessage(CC.translate(StaffCore.getInstance().getConfigFile().getString("PUNISHMENT.UNWARN_NO_WARNS_YET")));
+            String message = StaffCore.getInstance().getMessageHandler().get(sender, "PUNISHMENT.UNWARN_NO_WARNS_YET");
+            sender.sendMessage(CC.translate(message));
             return;
         }
 

@@ -5,6 +5,7 @@ import me.fckml.staffcore.commands.BaseCommand;
 import me.fckml.staffcore.profile.Profile;
 import me.fckml.staffcore.staffmode.StaffModeManager;
 import me.fckml.staffcore.utils.CC;
+import me.yushust.message.util.StringList;
 import org.bukkit.Bukkit;
 import org.bukkit.command.CommandSender;
 import org.bukkit.command.ConsoleCommandSender;
@@ -37,7 +38,8 @@ public class FreezeCommand extends BaseCommand {
                     Bukkit.getOnlinePlayers().forEach(online -> {
                         Profile profile = Profile.getProfileByUUID(online.getUniqueId());
 
-                        online.sendMessage(CC.translate(StaffCore.getInstance().getConfigFile().getString("FREEZE.UNFREEZE_MESSAGE_STAFF").replace("<player>", target.getName()).replace("<staff>", sender.getName())));
+                        String message = StaffCore.getInstance().getMessageHandler().get(online, "FREEZE.UNFREEZE_MESSAGE_STAFF");
+                        online.sendMessage(CC.translate(message.replace("<player>", target.getName()).replace("<staff>", sender.getName())));
                     });
                     return;
                 }
@@ -47,7 +49,8 @@ public class FreezeCommand extends BaseCommand {
                 Bukkit.getOnlinePlayers().forEach(online -> {
                     Profile profile = Profile.getProfileByUUID(online.getUniqueId());
 
-                    online.sendMessage(CC.translate(StaffCore.getInstance().getConfigFile().getString("FREEZE.FREEZE_MESSAGE_STAFF").replace("<player>", target.getName()).replace("<staff>", sender.getName())));
+                    String message = StaffCore.getInstance().getMessageHandler().get(online, "FREEZE.FREEZE_MESSAGE_STAFF");
+                    online.sendMessage(CC.translate(message.replace("<player>", target.getName()).replace("<staff>", sender.getName())));
                 });
                 return;
             }
@@ -56,7 +59,9 @@ public class FreezeCommand extends BaseCommand {
             Player target = Bukkit.getPlayer(args[0]);
 
             if (target == null) {
-                sender.sendMessage(CC.translate(StaffCore.getInstance().getConfigFile().getString("COMMANDS.NO_PLAYER")));
+                String message = StaffCore.getInstance().getMessageHandler().get(sender, "FREEZE.FREEZE_MESSAGE_STAFF");
+
+                sender.sendMessage(CC.translate(message));
                 return;
             }
 
@@ -66,7 +71,8 @@ public class FreezeCommand extends BaseCommand {
                 Bukkit.getOnlinePlayers().forEach(online -> {
                     Profile onlineProfile = Profile.getProfileByUUID(online.getUniqueId());
 
-                    online.sendMessage(CC.translate(StaffCore.getInstance().getConfigFile().getString("FREEZE.UNFREEZE_MESSAGE_STAFF").replace("<player>", target.getName()).replace("<staff>", sender.getName())));
+                    String message = StaffCore.getInstance().getMessageHandler().get(online, "FREEZE.UNFREEZE_MESSAGE_STAFF");
+                    online.sendMessage(CC.translate(message.replace("<player>", target.getName()).replace("<staff>", sender.getName())));
                 });
                 return;
             }
@@ -76,7 +82,8 @@ public class FreezeCommand extends BaseCommand {
             Bukkit.getOnlinePlayers().forEach(online -> {
                 Profile onlineProfile = Profile.getProfileByUUID(online.getUniqueId());
 
-                online.sendMessage(CC.translate(StaffCore.getInstance().getConfigFile().getString("FREEZE.FREEZE_MESSAGE_STAFF").replace("<player>", target.getName()).replace("<staff>", sender.getName())));
+                String message = StaffCore.getInstance().getMessageHandler().get(online, "FREEZE.FREEZE_MESSAGE_STAFF");
+                online.sendMessage(CC.translate(message.replace("<player>", target.getName()).replace("<staff>", sender.getName())));
             });
             return;
         }
@@ -87,6 +94,8 @@ public class FreezeCommand extends BaseCommand {
         }
 
         Profile profile = Profile.getProfileByUUID(((Player) sender).getUniqueId());
-        StaffCore.getInstance().getConfigFile().getStringList("FREEZE.USAGE").forEach(message -> sender.sendMessage(CC.translate(message)));
+
+        StringList message = StaffCore.getInstance().getMessageHandler().getMany(sender, "FREEZE.USAGE");
+        message.getContents().forEach(line -> sender.sendMessage(CC.translate(line)));
     }
 }

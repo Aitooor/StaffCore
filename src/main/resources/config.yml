@@ -163,6 +163,9 @@ STAFF_ROLLBACK:
     - "&cUsage: /staffrollback <player> <time>"
   CLEARED_PUNISHMENTS: "&aA total of &e<total> &epunishments have been removed."
 
+FLY:
+  ENABLED: "&aFly enabled."
+  DISABLED: "&cFly disabled."
 
 CHAT:
   DONOR_CHAT: "&7[DC] &f(<server>) <player>&7: &f<message>"

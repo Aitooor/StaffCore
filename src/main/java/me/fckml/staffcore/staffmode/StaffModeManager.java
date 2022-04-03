@@ -52,14 +52,14 @@ public class StaffModeManager implements Listener {
     }
 
     public void freezePlayer(Player player) {
-        StaffCore.getInstance().getConfigFile().getStringList("FREEZE.FREEZE_MESSAGE").forEach(message -> player.sendMessage(CC.translate(message)));
+        StaffCore.getInstance().getMessageHandler().getMany(player, "FREEZE.FREEZE_MESSAGE").getContents().forEach(line -> player.sendMessage(CC.translate(line)));
 
         this.freezeTimer.put(player.getUniqueId(), System.currentTimeMillis());
         this.frozenPlayers.add(player.getUniqueId());
     }
 
     public void unFreezePlayer(Player player) {
-        StaffCore.getInstance().getConfigFile().getStringList("FREEZE.UNFREEZE_MESSAGE").forEach(message -> player.sendMessage(CC.translate(message)));
+        StaffCore.getInstance().getMessageHandler().getMany(player, "FREEZE.UNFREEZE_MESSAGE").getContents().forEach(line -> player.sendMessage(CC.translate(line)));
 
         this.freezeTimer.remove(player.getUniqueId());
         this.frozenPlayers.remove(player.getUniqueId());
@@ -74,7 +74,7 @@ public class StaffModeManager implements Listener {
                 online.hidePlayer(player);
             }
 
-            player.sendMessage(CC.translate(StaffCore.getInstance().getConfigFile().getString("VANISH.ENABLED")));
+            player.sendMessage(CC.translate(StaffCore.getInstance().getMessageHandler().get(player, "VANISH.ENABLED")));
 
             this.vanishedPlayers.add(player.getUniqueId());
             return;
@@ -82,7 +82,7 @@ public class StaffModeManager implements Listener {
 
         for (Player online : Bukkit.getOnlinePlayers()) online.showPlayer(player);
 
-        player.sendMessage(CC.translate(StaffCore.getInstance().getConfigFile().getString("VANISH.DISABLED")));
+        player.sendMessage(CC.translate(StaffCore.getInstance().getMessageHandler().get(player, "VANISH.DISABLED")));
 
         this.vanishedPlayers.remove(player.getUniqueId());
     }
@@ -105,18 +105,18 @@ public class StaffModeManager implements Listener {
 
             player.setGameMode(GameMode.CREATIVE);
 
-            player.getInventory().setItem(0, new ItemBuilder(Material.INK_SACK).durability(10).name("&b&lVanish &7(&aON&7)").build());
+            player.getInventory().setItem(0, new ItemBuilder(Material.GRAY_DYE).durability(10).name("&b&lVanish &7(&aON&7)").build());
 
             player.getInventory().setItem(2, new ItemBuilder(Material.REDSTONE).name("&cDisable Staff Mode &7(Right Click)").build());
             player.getInventory().setItem(3, new ItemBuilder(Material.SUGAR).name("&bSpeed &7(Right Click)").build());
             player.getInventory().setItem(4, new ItemBuilder(Material.NETHER_STAR).name("&eFly &7(Right Click)").build());
             player.getInventory().setItem(5, new ItemBuilder(Material.PACKED_ICE).name("&bFreeze &7(Right Click)").build());
-            player.getInventory().setItem(6, new ItemBuilder(Material.SKULL_ITEM).durability(3).setOwner(player.getName()).name("&bOnline Staff &7(Right Click)").build());
+            player.getInventory().setItem(6, new ItemBuilder(Material.PLAYER_HEAD).setOwner(player.getName()).name("&bOnline Staff &7(Right Click)").build());
 
             player.getInventory().setItem(8, new ItemBuilder(Material.CHEST).name("&bCore Protect Addon &7(Right Click)").build());
 
             if (!this.isVanished(player)) this.setVanished(player, true);
-            player.sendMessage(CC.translate(StaffCore.getInstance().getConfigFile().getString("STAFFMODE.ENABLED")));
+            player.sendMessage(CC.translate(StaffCore.getInstance().getMessageHandler().get(player, "STAFFMODE.ENABLED")));
 
             this.inStaffMode.add(player.getUniqueId());
             return;
@@ -135,7 +135,7 @@ public class StaffModeManager implements Listener {
         player.getInventory().setArmorContents(this.armorMap.remove(player.getUniqueId()));
 
         this.setVanished(player, false);
-        player.sendMessage(CC.translate(StaffCore.getInstance().getConfigFile().getString("STAFFMODE.DISABLED")));
+        player.sendMessage(CC.translate(StaffCore.getInstance().getMessageHandler().get(player,"STAFFMODE.DISABLED")));
         this.inStaffMode.remove(player.getUniqueId());
     }
 
@@ -178,15 +178,14 @@ public class StaffModeManager implements Listener {
         if (stack == null) return;
 
         switch (stack.getType()) {
-            case INK_SACK: {
-                if (stack.getDurability() == (short) 8) {
-                    player.getInventory().setItem(0, new ItemBuilder(Material.INK_SACK).durability(10).name("&b&lVanish &7(&aON&7)").build());
+            case GRAY_DYE: {
+                player.getInventory().setItem(0, new ItemBuilder(Material.GREEN_DYE).durability(10).name("&b&lVanish &7(&aON&7)").build());
 
-                    this.setVanished(player, true);
-                    return;
-                }
-
-                player.getInventory().setItem(0, new ItemBuilder(Material.INK_SACK).durability(8).name("&b&lVanish &7(&cOFF&7)").build());
+                this.setVanished(player, true);
+                return;
+            }
+            case GREEN_DYE: {
+                player.getInventory().setItem(0, new ItemBuilder(Material.GRAY_DYE).durability(8).name("&b&lVanish &7(&cOFF&7)").build());
 
                 this.setVanished(player, false);
                 return;
@@ -198,59 +197,50 @@ public class StaffModeManager implements Listener {
             case NETHER_STAR: {
                 if (player.getAllowFlight()) {
                     player.setAllowFlight(false);
-                    player.sendMessage(CC.translate("&cFly mode disabled."));
+                    player.sendMessage(CC.translate(StaffCore.getInstance().getMessageHandler().get(player, "FLY.DISABLED")));
                     return;
                 }
 
                 player.setAllowFlight(true);
-                player.sendMessage(CC.translate("&aFly mode enabled."));
+                player.sendMessage(CC.translate(StaffCore.getInstance().getMessageHandler().get(player, "FLY.ENABLED")));
                 return;
             }
             case SUGAR: {
                 if (player.getFlySpeed() == 0.2f) {
                     player.setFlySpeed(0.4f);
-
-                    player.sendMessage(CC.translate("&bYour fly speed has been changed to &f" + player.getWalkSpeed() + "&b."));
                     return;
                 }
 
                 if (player.getFlySpeed() == 0.4f) {
                     player.setFlySpeed(0.6f);
-
-                    player.sendMessage(CC.translate("&bYour fly speed has been changed to &f" + player.getWalkSpeed() + "&b."));
                     return;
                 }
 
                 if (player.getFlySpeed() == 0.6f) {
                     player.setFlySpeed(0.8f);
-
-                    player.sendMessage(CC.translate("&bYour walk speed has been changed to &f" + player.getWalkSpeed() + "&b."));
                     return;
                 }
 
                 if (player.getFlySpeed() == 0.8) {
                     player.setFlySpeed(1.0f);
-
-                    player.sendMessage(CC.translate("&bYour fly speed has been changed to &f" + player.getWalkSpeed() + "&b."));
                     return;
                 }
 
                 player.setFlySpeed(0.2f);
-                player.sendMessage(CC.translate("&cYour fly speed has been restarted."));
                 return;
             }
             case CHEST: {
                 player.performCommand("co i");
                 return;
             }
-            case SKULL_ITEM: {
+            case PLAYER_HEAD: {
                 Tasks.runAsyncTask(() -> {
                     Inventory inventory = Bukkit.createInventory(null, 27, CC.translate("Staff Online"));
 
                     for (Player online : Bukkit.getOnlinePlayers()) {
                         if (!online.hasPermission("core.staff")) continue;
 
-                        inventory.addItem(new ItemBuilder(Material.SKULL_ITEM).durability(3).setOwner(online.getName()).name("&b" + online.getName()).build());
+                        inventory.addItem(new ItemBuilder(Material.PLAYER_HEAD).durability(3).setOwner(online.getName()).name("&b" + online.getName()).build());
                     }
 
                     player.openInventory(inventory);

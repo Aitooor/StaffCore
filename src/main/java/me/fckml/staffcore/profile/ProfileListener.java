@@ -37,7 +37,7 @@ public class ProfileListener implements Listener {
             for (Player online : Bukkit.getOnlinePlayers()) {
                 Profile profile = Profile.getProfileByUUID(online.getUniqueId());
 
-                StaffCore.getInstance().getConfigFile().getStringList("FREEZE.LOGGED_OUT").forEach(message -> online.sendMessage(CC.translate(message.replace("<player>", player.getName()))));
+                StaffCore.getInstance().getMessageHandler().getMany(player, "FREEZE.LOGGED_OUT").getContents().forEach(line -> player.sendMessage(CC.translate(line.replace("<player>", player.getName()))));
             }
         });
     }
@@ -48,7 +48,7 @@ public class ProfileListener implements Listener {
         if (!StaffModeManager.getInstance().getFreezeTimer().containsKey(player.getUniqueId())) return;
         Profile profile = Profile.getProfileByUUID(player.getUniqueId());
         String command = event.getMessage().split(" ")[0];
-        if (!StaffCore.getInstance().getConfigFile().getStringList("FREEZE.ALLOWED_COMMANDS").contains(command)) return;
+        if (!StaffCore.getInstance().getMessageHandler().getMany(player, "FREEZE.ALLOWED_COMMANDS").contains(command)) return;
 
         event.setCancelled(true);
     }
@@ -108,11 +108,11 @@ public class ProfileListener implements Listener {
 
             if (punishment != null) {
                 if (punishment.getType() == PunishmentType.BLACKLIST) {
-                    event.disallow(AsyncPlayerPreLoginEvent.Result.KICK_OTHER, String.join("\n", this.getPunishmentTypeBan(profile, punishment, StaffCore.getInstance().getConfigFile().getStringList("PUNISHMENT.BLACKLIST_KICK_MESSAGE"))));
+                    event.disallow(AsyncPlayerPreLoginEvent.Result.KICK_OTHER, String.join("\n", this.getPunishmentTypeBan(profile, punishment, StaffCore.getInstance().getMessageHandler().getMany(Bukkit.getConsoleSender(), "PUNISHMENT.BLACKLIST_KICK_MESSAGE").getContents())));
                     return;
                 }
 
-                event.disallow(AsyncPlayerPreLoginEvent.Result.KICK_OTHER, String.join("\n", this.getPunishmentTypeBan(profile, punishment, StaffCore.getInstance().getConfigFile().getStringList("PUNISHMENT.BAN_KICK_MESSAGE"))));
+                event.disallow(AsyncPlayerPreLoginEvent.Result.KICK_OTHER, String.join("\n", this.getPunishmentTypeBan(profile, punishment, StaffCore.getInstance().getMessageHandler().getMany(Bukkit.getConsoleSender(), "PUNISHMENT.BAN_KICK_MESSAGE").getContents())));
                 return;
             }
 

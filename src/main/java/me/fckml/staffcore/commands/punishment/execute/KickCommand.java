@@ -9,6 +9,7 @@ import me.fckml.staffcore.punishment.PunishmentType;
 import me.fckml.staffcore.utils.CC;
 import me.fckml.staffcore.utils.StringUtils;
 import me.fckml.staffcore.utils.Tasks;
+import me.yushust.message.util.StringList;
 import org.bukkit.Bukkit;
 import org.bukkit.command.CommandSender;
 import org.bukkit.command.ConsoleCommandSender;
@@ -34,7 +35,7 @@ public class KickCommand extends BaseCommand {
         }
 
         if (args.length < 2 && sender instanceof Player) {
-            sender.sendMessage(CC.translate(StaffCore.getInstance().getConfigFile().getString("PUNISHMENT.KICK_USAGE")));
+            StaffCore.getInstance().getMessageHandler().send(sender, "PUNISHMENT.KICK_USAGE");
             return;
         }
 
@@ -46,7 +47,7 @@ public class KickCommand extends BaseCommand {
                 return;
             }
 
-            sender.sendMessage(CC.translate(StaffCore.getInstance().getConfigFile().getString("PUNISHMENT.KICK_NO_PLAYER")));
+            StaffCore.getInstance().getMessageHandler().send(sender, "PUNISHMENT.KICK_NO_PLAYER");
             return;
         }
 
@@ -70,7 +71,8 @@ public class KickCommand extends BaseCommand {
         PunishmentHelper.save(punishment);
         PunishmentHelper.publishBan(punishment, target.getName(), sender.getName());
 
-        Tasks.runTask(() -> target.kickPlayer(String.join("\n", this.getPunishmentTypeKick(targetProfile, punishment, args[0], sender.getName(), StaffCore.getInstance().getConfigFile().getStringList("PUNISHMENT.KICK_MESSAGE")))));
+        StringList strings = StaffCore.getInstance().getMessageHandler().getMany(sender, "PUNISHMENT.KICK_MESSAGE");
+        Tasks.runTask(() -> target.kickPlayer(String.join("\n", this.getPunishmentTypeKick(targetProfile, punishment, args[0], sender.getName(), strings.getContents()))));
     }
 
 

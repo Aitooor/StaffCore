@@ -8,6 +8,7 @@ import me.fckml.staffcore.punishment.Punishment;
 import me.fckml.staffcore.punishment.PunishmentHelper;
 import me.fckml.staffcore.punishment.PunishmentType;
 import me.fckml.staffcore.utils.CC;
+import me.yushust.message.util.StringList;
 import org.bson.Document;
 import org.bukkit.command.CommandSender;
 import org.bukkit.command.ConsoleCommandSender;
@@ -33,7 +34,8 @@ public class WipeCommand extends BaseCommand {
         if (args.length < 1 && sender instanceof Player) {
             Profile profile = Profile.getProfileByUUID(((Player) sender).getUniqueId());
 
-            StaffCore.getInstance().getConfigFile().getStringList("WIPE_PUNISHMENTS.USAGE").forEach(message -> sender.sendMessage(CC.translate(message)));
+            StringList message = StaffCore.getInstance().getMessageHandler().getMany(sender, "WIPE_PUNISHMENTS.USAGE");
+            message.getContents().forEach(line -> sender.sendMessage(CC.translate(line)));
             return;
         }
 
@@ -77,6 +79,7 @@ public class WipeCommand extends BaseCommand {
 
         Profile profile = Profile.getProfileByUUID(((Player) sender).getUniqueId());
 
-        sender.sendMessage(CC.translate(StaffCore.getInstance().getConfigFile().getString("WIPE_PUNISHMENTS.WIPED").replace("<total>", erasedPunishments + "")));
+        String message = StaffCore.getInstance().getMessageHandler().get(sender, "WIPE_PUNISHMENTS.WIPED");
+        sender.sendMessage(CC.translate(message.replace("<total>", Integer.toString(erasedPunishments))));
     }
 }

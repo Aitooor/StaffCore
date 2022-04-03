@@ -25,13 +25,13 @@ public class StaffChatCommand extends BaseCommand {
         if (profile.getChat() == ProfileChat.STAFF_CHAT) {
             profile.setChat(ProfileChat.NORMAL);
 
-            sender.sendMessage(CC.translate(StaffCore.getInstance().getConfigFile().getString("STAFF_CHAT.DISABLED")));
+            StaffCore.getInstance().getMessageHandler().send(player, "STAFF_CHAT.DISABLED");
             return;
         }
 
         profile.setChat(ProfileChat.STAFF_CHAT);
         Tasks.runAsyncTask(profile::save);
 
-        sender.sendMessage(CC.translate(StaffCore.getInstance().getConfigFile().getString("STAFF_CHAT.ENABLED")));
+        StaffCore.getInstance().getMessageHandler().send(player, "STAFF_CHAT.DISABLED");
     }
 }

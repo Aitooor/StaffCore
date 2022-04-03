@@ -4,7 +4,6 @@ import me.fckml.staffcore.StaffCore;
 import me.fckml.staffcore.commands.BaseCommand;
 import me.fckml.staffcore.profile.Profile;
 import me.fckml.staffcore.profile.ProfileChat;
-import me.fckml.staffcore.utils.CC;
 import me.fckml.staffcore.utils.Tasks;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
@@ -25,13 +24,13 @@ public class AdminChatCommand extends BaseCommand {
         if (profile.getChat() == ProfileChat.ADMIN_CHAT) {
             profile.setChat(ProfileChat.NORMAL);
 
-            sender.sendMessage(CC.translate(StaffCore.getInstance().getConfigFile().getString("ADMIN_CHAT.DISABLED")));
+            StaffCore.getInstance().getMessageHandler().send(player, "ADMIN_CHAT.DISABLED");
             return;
         }
 
         profile.setChat(ProfileChat.ADMIN_CHAT);
         Tasks.runAsyncTask(profile::save);
 
-        sender.sendMessage(CC.translate(StaffCore.getInstance().getConfigFile().getString("ADMIN_CHAT.ENABLED")));
+        StaffCore.getInstance().getMessageHandler().send(player, "ADMIN_CHAT.ENABLED");
     }
 }

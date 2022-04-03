@@ -29,9 +29,9 @@ public class PunishPacketListener implements PacketListener {
             Profile profile = Profile.getProfileByUUID(victim.getUniqueId());
 
             if (punishment.getType() == PunishmentType.TEMPBAN || punishment.getType() == PunishmentType.BAN) {
-                Tasks.runTask(() -> victim.kickPlayer(String.join("\n", this.getPunishmentTypeBan(profile, punishment, senderName, staffName, StaffCore.getInstance().getConfigFile().getStringList("PUNISHMENT.BAN_KICK_MESSAGE")))));
+                Tasks.runTask(() -> victim.kickPlayer(String.join("\n", this.getPunishmentTypeBan(profile, punishment, senderName, staffName, StaffCore.getInstance().getMessageHandler().getMany(victim, "PUNISHMENT.BAN_KICK_MESSAGE").getContents()))));
             } else if (punishment.getType() == PunishmentType.BLACKLIST) {
-                Tasks.runTask(() -> victim.kickPlayer(String.join("\n", this.getPunishmentTypeBlacklist(profile, punishment, senderName, staffName, StaffCore.getInstance().getConfigFile().getStringList("PUNISHMENT.BLACKLIST_KICK_MESSAGE")))));
+                Tasks.runTask(() -> victim.kickPlayer(String.join("\n", this.getPunishmentTypeBlacklist(profile, punishment, senderName, staffName, StaffCore.getInstance().getMessageHandler().getMany(victim, "PUNISHMENT.BLACKLIST_KICK_MESSAGE").getContents()))));
             } else if (punishment.getType() == PunishmentType.WARN) {
                 victim.sendMessage(CC.translate("&cYou have been warned."));
                 victim.sendMessage(CC.translate("&cExpires in: &f7 days."));
@@ -44,7 +44,7 @@ public class PunishPacketListener implements PacketListener {
 
             if (punishment.isSilent() && !online.hasPermission("core.silent")) return;
 
-            StaffCore.getInstance().getConfigFile().getStringList(this.getConfigPathByPunishmentType(punishment)).forEach(line -> {
+            StaffCore.getInstance().getMessageHandler().getMany(online, this.getConfigPathByPunishmentType(punishment)).forEach(line -> {
                 if (line.contains("<reason>")) line = line.replace("<reason>", punishment.getAddedReason());
                 if (line.contains("<added_by>")) line = line.replace("<added_by>", punishment.getStaffName());
                 if (line.contains("<banned>")) line = line.replace("<banned>", punishment.getVictimName());
@@ -54,14 +54,14 @@ public class PunishPacketListener implements PacketListener {
 
                 if (punishment.getType() != PunishmentType.BLACKLIST) {
                     if (line.contains("<context>"))
-                        line = line.replace("<context>", (punishment.getType() == PunishmentType.TEMPBAN) ? StaffCore.getInstance().getConfigFile().getString("PUNISHMENT.BAN_TEMPORARY_MESSAGE") : StaffCore.getInstance().getConfigFile().getString("PUNISHMENT.BAN_PERMANENT_MESSAGE"));
+                        line = line.replace("<context>", (punishment.getType() == PunishmentType.TEMPBAN) ? StaffCore.getInstance().getMessageHandler().get(online, "PUNISHMENT.BAN_TEMPORARY_MESSAGE") : StaffCore.getInstance().getMessageHandler().get(online, "PUNISHMENT.BAN_PERMANENT_MESSAGE"));
                 }
 
                 online.sendMessage(CC.translate(line));
             });
         }));
 
-        StaffCore.getInstance().getConfigFile().getStringList(this.getConfigPathByPunishmentType(punishment)).forEach(line -> {
+        StaffCore.getInstance().getMessageHandler().getMany(Bukkit.getConsoleSender(), this.getConfigPathByPunishmentType(punishment)).forEach(line -> {
             if (line.contains("<reason>")) line = line.replace("<reason>", punishment.getAddedReason());
             if (line.contains("<added_by>")) line = line.replace("<added_by>", punishment.getStaffName());
             if (line.contains("<banned>")) line = line.replace("<banned>", punishment.getVictimName());
@@ -70,7 +70,7 @@ public class PunishPacketListener implements PacketListener {
 
             if (punishment.getType() != PunishmentType.BLACKLIST) {
                 if (line.contains("<context>"))
-                    line = line.replace("<context>", (punishment.getType() == PunishmentType.TEMPBAN) ? StaffCore.getInstance().getConfigFile().getString("PUNISHMENT.BAN_TEMPORARY_MESSAGE") : StaffCore.getInstance().getConfigFile().getString("PUNISHMENT.BAN_PERMANENT_MESSAGE"));
+                    line = line.replace("<context>", (punishment.getType() == PunishmentType.TEMPBAN) ? StaffCore.getInstance().getMessageHandler().get(Bukkit.getConsoleSender(), "PUNISHMENT.BAN_TEMPORARY_MESSAGE") : StaffCore.getInstance().getMessageHandler().get(Bukkit.getConsoleSender(), "PUNISHMENT.BAN_PERMANENT_MESSAGE"));
             }
 
             Bukkit.getConsoleSender().sendMessage(CC.translate(line));
@@ -86,13 +86,13 @@ public class PunishPacketListener implements PacketListener {
 
         if (victim != null) {
             if (punishment.getType() == PunishmentType.MUTE) {
-                StaffCore.getInstance().getConfigFile().getStringList("PUNISHMENT.UNMUTE_MESSAGE").forEach(message -> {
+                StaffCore.getInstance().getMessageHandler().getMany(victim, "PUNISHMENT.UNMUTE_MESSAGE").forEach(message -> {
                     message = message.replace("<reason>", punishment.getAddedReason());
 
                     victim.sendMessage(CC.translate(message));
                 });
             } else if (punishment.getType() == PunishmentType.WARN) {
-                StaffCore.getInstance().getConfigFile().getStringList("PUNISHMENT.UNWARN_MESSAGE").forEach(message -> {
+                StaffCore.getInstance().getMessageHandler().getMany(victim, "PUNISHMENT.UNWARN_MESSAGE").forEach(message -> {
                     message = message.replace("<reason>", punishment.getAddedReason());
 
                     victim.sendMessage(CC.translate(message));
@@ -105,7 +105,7 @@ public class PunishPacketListener implements PacketListener {
 
             if (punishment.isSilent() && !online.hasPermission("core.silent")) return;
 
-            StaffCore.getInstance().getConfigFile().getStringList(this.getConfigPathByUndoPunishmentType(punishment)).forEach(line -> {
+            StaffCore.getInstance().getMessageHandler().getMany(online, this.getConfigPathByUndoPunishmentType(punishment)).forEach(line -> {
                 if (line.contains("<reason>")) line = line.replace("<reason>", punishment.getAddedReason());
                 if (line.contains("<added_by>")) line = line.replace("<added_by>", punishment.getStaffName());
                 if (line.contains("<banned>")) line = line.replace("<banned>", punishment.getVictimName());
@@ -115,13 +115,13 @@ public class PunishPacketListener implements PacketListener {
 
                 if (punishment.getType() != PunishmentType.BLACKLIST) {
                     if (line.contains("<context>"))
-                        line = line.replace("<context>", (punishment.getType() == PunishmentType.TEMPBAN) ? StaffCore.getInstance().getConfigFile().getString("PUNISHMENT.BAN_TEMPORARY_MESSAGE") : StaffCore.getInstance().getConfigFile().getString("PUNISHMENT.BAN_PERMANENT_MESSAGE"));
+                        line = line.replace("<context>", (punishment.getType() == PunishmentType.TEMPBAN) ? StaffCore.getInstance().getMessageHandler().get(online, "PUNISHMENT.BAN_TEMPORARY_MESSAGE") : StaffCore.getInstance().getMessageHandler().get(online, "PUNISHMENT.BAN_PERMANENT_MESSAGE"));
                 }
                 online.sendMessage(CC.translate(line));
             });
         }));
 
-        StaffCore.getInstance().getConfigFile().getStringList(this.getConfigPathByUndoPunishmentType(punishment)).forEach(line -> {
+        StaffCore.getInstance().getMessageHandler().getMany(Bukkit.getConsoleSender(), this.getConfigPathByUndoPunishmentType(punishment)).forEach(line -> {
             if (line.contains("<reason>")) line = line.replace("<reason>", punishment.getAddedReason());
             if (line.contains("<added_by>")) line = line.replace("<added_by>", punishment.getStaffName());
             if (line.contains("<banned>")) line = line.replace("<banned>", punishment.getVictimName());
@@ -130,7 +130,7 @@ public class PunishPacketListener implements PacketListener {
 
             if (punishment.getType() != PunishmentType.BLACKLIST) {
                 if (line.contains("<context>"))
-                    line = line.replace("<context>", (punishment.getType() == PunishmentType.TEMPBAN) ? StaffCore.getInstance().getConfigFile().getString("PUNISHMENT.BAN_TEMPORARY_MESSAGE") : StaffCore.getInstance().getConfigFile().getString("PUNISHMENT.BAN_PERMANENT_MESSAGE"));
+                    line = line.replace("<context>", (punishment.getType() == PunishmentType.TEMPBAN) ? StaffCore.getInstance().getMessageHandler().get(Bukkit.getConsoleSender(), "PUNISHMENT.BAN_TEMPORARY_MESSAGE") : StaffCore.getInstance().getMessageHandler().get(Bukkit.getConsoleSender(), "PUNISHMENT.BAN_PERMANENT_MESSAGE"));
             }
 
             Bukkit.getConsoleSender().sendMessage(CC.translate(line));
@@ -147,7 +147,7 @@ public class PunishPacketListener implements PacketListener {
             if (line.contains("<reason>")) line = line.replace("<reason>", punishment.getAddedReason());
             if (line.contains("<duration>")) line = line.replace("<duration>", punishment.getRemaining());
             if (line.contains("<context>"))
-                line = line.replace("<context>", (punishment.getType() == PunishmentType.TEMPBAN) ? StaffCore.getInstance().getConfigFile().getString("PUNISHMENT.BAN_TEMPORARY_MESSAGE") : StaffCore.getInstance().getConfigFile().getString("PUNISHMENT.BAN_PERMANENT_MESSAGE"));
+                line = line.replace("<context>", (punishment.getType() == PunishmentType.TEMPBAN) ? StaffCore.getInstance().getMessageHandler().get(Bukkit.getConsoleSender(), "PUNISHMENT.BAN_TEMPORARY_MESSAGE") : StaffCore.getInstance().getMessageHandler().get(Bukkit.getConsoleSender(), "PUNISHMENT.BAN_PERMANENT_MESSAGE"));
 
             list.add(line);
         }

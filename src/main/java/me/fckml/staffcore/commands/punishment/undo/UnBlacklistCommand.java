@@ -31,7 +31,8 @@ public class UnBlacklistCommand extends BaseCommand {
         if (args.length < 2 && sender instanceof Player) {
             Profile profile = Profile.getProfileByUUID(((Player) sender).getUniqueId());
 
-            sender.sendMessage(CC.translate(StaffCore.getInstance().getConfigFile().getString("PUNISHMENT.UNBLACKLIST_USAGE")));
+            String message = StaffCore.getInstance().getMessageHandler().get(sender, "PUNISHMENT.UNBLACKLIST_USAGE");
+            sender.sendMessage(CC.translate(message));
             return;
         }
 
@@ -49,7 +50,8 @@ public class UnBlacklistCommand extends BaseCommand {
 
             Profile profile = Profile.getProfileByUUID(((Player) sender).getUniqueId());
 
-            sender.sendMessage(CC.translate(StaffCore.getInstance().getConfigFile().getString("PUNISHMENT.UNBLACKLIST_NO_BLACKLISTS_YET")));
+            String message = StaffCore.getInstance().getMessageHandler().get(sender, "PUNISHMENT.UNBLACKLIST_NO_BLACKLISTS_YET");
+            sender.sendMessage(CC.translate(message));
             return;
         }
 

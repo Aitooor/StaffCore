@@ -8,6 +8,7 @@ import me.fckml.staffcore.punishment.Punishment;
 import me.fckml.staffcore.punishment.PunishmentHelper;
 import me.fckml.staffcore.utils.CC;
 import me.fckml.staffcore.utils.TimeUtils;
+import me.yushust.message.util.StringList;
 import org.bson.Document;
 import org.bukkit.command.CommandSender;
 import org.bukkit.command.ConsoleCommandSender;
@@ -33,7 +34,8 @@ public class StaffRollbackCommand extends BaseCommand {
         if (args.length < 2 && sender instanceof Player) {
             Profile profile = Profile.getProfileByUUID(((Player) sender).getUniqueId());
 
-            StaffCore.getInstance().getConfigFile().getStringList("STAFF_ROLLBACK.USAGE").forEach(message -> sender.sendMessage(CC.translate(message)));
+            StringList message = StaffCore.getInstance().getMessageHandler().getMany(sender, "STAFF_ROLLBACK.USAGE");
+            message.getContents().forEach(line -> sender.sendMessage(CC.translate(line)));
             return;
         }
 
@@ -63,6 +65,7 @@ public class StaffRollbackCommand extends BaseCommand {
 
         Profile profile = Profile.getProfileByUUID(((Player) sender).getUniqueId());
 
-        sender.sendMessage(CC.translate(StaffCore.getInstance().getConfigFile().getString("STAFF_ROLLBACK.CLEARED_PUNISHMENTS").replace("<total>", erasedPunishments + "")));
+        String message = StaffCore.getInstance().getMessageHandler().get(sender, "STAFF_ROLLBACK.CLEARED_PUNISHMENTS");
+        sender.sendMessage(CC.translate(message.replace("<total>", Integer.toString(erasedPunishments))));
     }
 }
