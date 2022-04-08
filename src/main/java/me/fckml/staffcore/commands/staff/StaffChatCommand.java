@@ -32,6 +32,6 @@ public class StaffChatCommand extends BaseCommand {
         profile.setChat(ProfileChat.STAFF_CHAT);
         Tasks.runAsyncTask(profile::save);
 
-        StaffCore.getInstance().getMessageHandler().send(player, "STAFF_CHAT.DISABLED");
+        StaffCore.getInstance().getMessageHandler().send(player, "STAFF_CHAT.ENABLED");
     }
 }

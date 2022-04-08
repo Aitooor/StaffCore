@@ -35,7 +35,7 @@ public class StaffModeManager implements Listener {
     private Map<UUID, ItemStack[]> armorMap;
     private Map<UUID, ItemStack[]> itemMap;
 
-    private List<UUID> frozenPlayers, vanishedPlayers, inStaffMode;
+    private List<UUID> frozenPlayers, vanishedPlayers, inStaffMode, fixedInteract;
 
     public StaffModeManager() {
         instance = this;
@@ -43,6 +43,7 @@ public class StaffModeManager implements Listener {
         this.frozenPlayers = Lists.newArrayList();
         this.vanishedPlayers = Lists.newArrayList();
         this.inStaffMode = Lists.newArrayList();
+        this.fixedInteract = Lists.newArrayList();
 
         this.armorMap = Maps.newConcurrentMap();
         this.itemMap = Maps.newConcurrentMap();
@@ -177,6 +178,15 @@ public class StaffModeManager implements Listener {
         ItemStack stack = event.getItem();
         if (stack == null) return;
 
+        if (event.getClickedBlock() != null) {
+            if (this.fixedInteract.remove(player.getUniqueId())) {
+                event.setCancelled(true);
+                return;
+            }
+
+            fixedInteract.add(player.getUniqueId());
+        }
+
         switch (stack.getType()) {
             case GRAY_DYE: {
                 player.getInventory().setItem(0, new ItemBuilder(Material.GREEN_DYE).durability(10).name("&b&lVanish &7(&aON&7)").build());
@@ -208,24 +218,33 @@ public class StaffModeManager implements Listener {
             case SUGAR: {
                 if (player.getFlySpeed() == 0.2f) {
                     player.setFlySpeed(0.4f);
+
+                    player.sendMessage(CC.translate(StaffCore.getInstance().getMessageHandler().get(player, "SPEED.TO_4")));
                     return;
                 }
 
                 if (player.getFlySpeed() == 0.4f) {
                     player.setFlySpeed(0.6f);
+
+                    player.sendMessage(CC.translate(StaffCore.getInstance().getMessageHandler().get(player, "SPEED.TO_6")));
                     return;
                 }
 
                 if (player.getFlySpeed() == 0.6f) {
                     player.setFlySpeed(0.8f);
+
+                    player.sendMessage(CC.translate(StaffCore.getInstance().getMessageHandler().get(player, "SPEED.TO_8")));
                     return;
                 }
 
-                if (player.getFlySpeed() == 0.8) {
+                if (player.getFlySpeed() == 0.8f) {
                     player.setFlySpeed(1.0f);
+
+                    player.sendMessage(CC.translate(StaffCore.getInstance().getMessageHandler().get(player, "SPEED.TO_10")));
                     return;
                 }
 
+                player.sendMessage(CC.translate(StaffCore.getInstance().getMessageHandler().get(player, "SPEED.RESET")));
                 player.setFlySpeed(0.2f);
                 return;
             }
@@ -243,7 +262,7 @@ public class StaffModeManager implements Listener {
                         inventory.addItem(new ItemBuilder(Material.PLAYER_HEAD).durability(3).setOwner(online.getName()).name("&b" + online.getName()).build());
                     }
 
-                    player.openInventory(inventory);
+                    Tasks.runTask(() -> player.openInventory(inventory));
                 });
             }
         }
