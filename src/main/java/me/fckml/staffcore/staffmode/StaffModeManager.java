@@ -15,6 +15,8 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
+import org.bukkit.event.block.BlockBreakEvent;
+import org.bukkit.event.block.BlockPlaceEvent;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.player.PlayerInteractEntityEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
@@ -165,6 +167,22 @@ public class StaffModeManager implements Listener {
         event.setCancelled(true);
     }
 
+    @EventHandler(ignoreCancelled = true, priority = EventPriority.HIGH)
+    public void onBlockPlace(BlockPlaceEvent event) {
+        Player player = event.getPlayer();
+        if (!this.inStaffMode.contains(player.getUniqueId())) return;
+
+        event.setCancelled(true);
+    }
+
+    @EventHandler(ignoreCancelled = true, priority = EventPriority.HIGH)
+    public void onBlockBreak(BlockBreakEvent event) {
+        Player player = event.getPlayer();
+        if (!this.inStaffMode.contains(player.getUniqueId())) return;
+
+        event.setCancelled(true);
+    }
+
     @EventHandler
     public void onPlayerQuit(PlayerQuitEvent event) {
         StaffModeManager.getInstance().setInStaffMode(event.getPlayer(), false);
@@ -209,24 +227,33 @@ public class StaffModeManager implements Listener {
             case SUGAR: {
                 if (player.getFlySpeed() == 0.2f) {
                     player.setFlySpeed(0.4f);
+
+                    player.sendMessage(CC.translate(StaffCore.getInstance().getMessageHandler().get(player, "SPEED.TO_4")));
                     return;
                 }
 
                 if (player.getFlySpeed() == 0.4f) {
                     player.setFlySpeed(0.6f);
+
+                    player.sendMessage(CC.translate(StaffCore.getInstance().getMessageHandler().get(player, "SPEED.TO_6")));
                     return;
                 }
 
                 if (player.getFlySpeed() == 0.6f) {
                     player.setFlySpeed(0.8f);
+
+                    player.sendMessage(CC.translate(StaffCore.getInstance().getMessageHandler().get(player, "SPEED.TO_8")));
                     return;
                 }
 
-                if (player.getFlySpeed() == 0.8) {
+                if (player.getFlySpeed() == 0.8f) {
                     player.setFlySpeed(1.0f);
+
+                    player.sendMessage(CC.translate(StaffCore.getInstance().getMessageHandler().get(player, "SPEED.TO_10")));
                     return;
                 }
 
+                player.sendMessage(CC.translate(StaffCore.getInstance().getMessageHandler().get(player, "SPEED.RESET")));
                 player.setFlySpeed(0.2f);
                 return;
             }
@@ -244,7 +271,7 @@ public class StaffModeManager implements Listener {
                         inventory.addItem(new ItemBuilder(Material.SKULL_ITEM).durability(3).setOwner(online.getName()).name("&b" + online.getName()).build());
                     }
 
-                    player.openInventory(inventory);
+                    Tasks.runTask(() -> player.openInventory(inventory));
                 });
             }
         }
