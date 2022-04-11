@@ -20,6 +20,7 @@ import org.bukkit.command.ConsoleCommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
 
+import java.io.File;
 import java.util.Arrays;
 
 @Getter
@@ -58,6 +59,14 @@ public class StaffCore extends JavaPlugin {
     }
 
     public void setupNMessages() {
+        File langFolder = new File(this.getDataFolder(), "lang/");
+
+        try {
+            langFolder.createNewFile();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
         MessageProvider messageProvider = MessageProvider
                 .create(
                         MessageSourceDecorator
@@ -80,5 +89,7 @@ public class StaffCore extends JavaPlugin {
                 );
 
         messageHandler = MessageHandler.of(messageProvider);
+
+        if (this.getResource("lang/lang_en.yml") != null) this.saveResource("lang/lang_en.yml", false);
     }
 }

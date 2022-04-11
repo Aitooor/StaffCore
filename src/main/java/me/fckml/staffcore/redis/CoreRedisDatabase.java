@@ -6,6 +6,7 @@ import com.google.gson.JsonParser;
 import lombok.Data;
 import lombok.Getter;
 
+import me.fckml.staffcore.StaffCore;
 import me.fckml.staffcore.profile.listeners.ProfilePacketListener;
 import me.fckml.staffcore.punishment.listeners.PunishPacketListener;
 import me.fckml.staffcore.punishment.packets.PunishmentExecutePacket;
@@ -59,7 +60,13 @@ public class CoreRedisDatabase {
         config.setMinEvictableIdleTimeMillis(60000L);
         config.setTimeBetweenEvictionRunsMillis(30000L);
 
-        this.redisPool = new JedisPool(config, "127.0.0.1", 6379, 30000);
+        String password = StaffCore.getInstance().getConfigFile().getString("REDIS.PASSWORD");
+
+        if (password == null || password.isEmpty()) {
+            this.redisPool = new JedisPool(config, "127.0.0.1", 6379, 30000);
+        } else {
+            this.redisPool = new JedisPool(config, "127.0.0.1", 6379, 30000, password);
+        }
 
         this.setupPubSub();
 
@@ -151,9 +158,10 @@ public class CoreRedisDatabase {
 
         ForkJoinPool.commonPool().execute(() -> {
             try {
+                String password = StaffCore.getInstance().getConfigFile().getString("REDIS.PASSWORD");
                 Jedis jedis = this.redisPool.getResource();
 
-                jedis.auth("PASSWORD HERE"); // REMOVE THIS LINE IN CASE THAT YOUR REDIS HAS NO PASSWORD
+                if (password == null || !password.isEmpty()) jedis.auth(password); // REMOVE THIS LINE IN CASE THAT YOUR REDIS HAS NO PASSWORD
                 jedis.subscribe(this.jedisPubSub, "Core");
             } catch (Exception e) {
                 e.printStackTrace();
