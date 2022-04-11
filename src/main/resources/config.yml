@@ -1,3 +1,7 @@
+REDIS:
+  CHANNEL: Core
+  PASSWORD: ''
+
 SERVER:
   NAME: Default
   GROUP: Survival
