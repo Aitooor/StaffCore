@@ -59,10 +59,10 @@ public class StaffCore extends JavaPlugin {
     }
 
     public void setupNMessages() {
-        File langFolder = new File(this.getDataFolder(), "lang/");
+        File langFolder = new File(this.getDataFolder(), "lang");
 
         try {
-            langFolder.createNewFile();
+            langFolder.mkdir();
         } catch (Exception e) {
             e.printStackTrace();
         }
