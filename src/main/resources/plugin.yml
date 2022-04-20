@@ -2,3 +2,5 @@ name: StaffCore
 main: me.fckml.staffcore.StaffCore
 version: 1.0
 author: Fckml
+
+api-version: 1.18

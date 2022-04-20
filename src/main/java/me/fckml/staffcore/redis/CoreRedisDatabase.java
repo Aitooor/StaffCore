@@ -19,6 +19,7 @@ import me.fckml.staffcore.redis.packets.ChatPacket;
 import me.fckml.staffcore.redis.packets.StaffJoinedPacket;
 import me.fckml.staffcore.redis.packets.StaffLeftPacket;
 import me.fckml.staffcore.redis.packets.StaffSwitchedPacket;
+import me.fckml.staffcore.utils.config.ConfigFile;
 import redis.clients.jedis.Jedis;
 import redis.clients.jedis.JedisPool;
 import redis.clients.jedis.JedisPoolConfig;
@@ -44,6 +45,12 @@ public class CoreRedisDatabase {
     private Map<String, Class> idToType;
     private Map<Class, String> typeToId;
 
+    ConfigFile configFile = StaffCore.getInstance().getConfigFile();
+
+    String ip = configFile.getString("REDIS.IP");
+    int port = configFile.getInteger("REDIS.PORT");
+    String password = configFile.getString("REDIS.PASSWORD");
+
     public CoreRedisDatabase() {
         instance = this;
 
@@ -60,12 +67,10 @@ public class CoreRedisDatabase {
         config.setMinEvictableIdleTimeMillis(60000L);
         config.setTimeBetweenEvictionRunsMillis(30000L);
 
-        String password = StaffCore.getInstance().getConfigFile().getString("REDIS.PASSWORD");
-
         if (password == null || password.isEmpty()) {
-            this.redisPool = new JedisPool(config, "127.0.0.1", 6379, 30000);
+            this.redisPool = new JedisPool(config, ip, port, 30000);
         } else {
-            this.redisPool = new JedisPool(config, "127.0.0.1", 6379, 30000, password);
+            this.redisPool = new JedisPool(config, ip, port, 30000, password);
         }
 
         this.setupPubSub();
@@ -158,7 +163,6 @@ public class CoreRedisDatabase {
 
         ForkJoinPool.commonPool().execute(() -> {
             try {
-                String password = StaffCore.getInstance().getConfigFile().getString("REDIS.PASSWORD");
                 Jedis jedis = this.redisPool.getResource();
 
                 if (password == null || !password.isEmpty()) jedis.auth(password); // REMOVE THIS LINE IN CASE THAT YOUR REDIS HAS NO PASSWORD
