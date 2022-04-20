@@ -8,6 +8,8 @@ import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
 import lombok.Data;
 import lombok.Getter;
+import me.fckml.staffcore.StaffCore;
+import me.fckml.staffcore.utils.config.ConfigFile;
 import org.bson.Document;
 
 @Data
@@ -25,11 +27,23 @@ public class CoreMongoDatabase {
     private MongoCollection<Document> profiles;
     private MongoCollection<Document> punishments;
 
+    ConfigFile configFile = StaffCore.getInstance().getConfigFile();
+
+    String ip = configFile.getString("MONGO.IP");
+    int port = configFile.getInteger("MONGO.PORT");
+    String user = configFile.getString("MONGO.USER");
+    String password = configFile.getString("MONGO.PASSWORD");
+    String database = configFile.getString("MONGO.DATABASE");
+
     public CoreMongoDatabase() {
         instance = this;
 
-        this.mongoClient = new MongoClient(new ServerAddress("127.0.0.1", 27017), MongoCredential.createCredential("root", "StaffCore", "asd".toCharArray()), MongoClientOptions.builder().build());
-        this.mongoDatabase = this.mongoClient.getDatabase("StaffCore");
+        this.mongoClient = new MongoClient(
+                new ServerAddress(ip, port),
+                MongoCredential.createCredential(
+                        user, database, password.toCharArray()),
+                MongoClientOptions.builder().build());
+        this.mongoDatabase = this.mongoClient.getDatabase(database);
 
         this.grants = this.mongoDatabase.getCollection("grants");
         this.ranks = this.mongoDatabase.getCollection("ranks");

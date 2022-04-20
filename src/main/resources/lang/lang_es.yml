@@ -1,0 +1,212 @@
+SERVER:
+  JOINED: "&b[S] &3<player> &7se a &aunido &7a &d<server>&7."
+  LEFT: "&b[S] &3<player> &7a &7c&salido &7de la network."
+  SWITCHED: "&b[S] &3<player> &7a &ecambiado &7de &d<server> &7a &d<newserver>&7."
+
+COMMAND:
+  NO_PERMISSION: "&cTu no tienes permiso para utilizar este comando, cuidado con lo que haces."
+  NO_PLAYER: "&cJugador no encontrado."
+
+PUNISHMENT:
+  REMOVED: "Removido"
+  PERMANENT: "Permanente"
+  EXPIRED: "Expirado"
+  DAY_FORMAT: "Dia"
+  HOURS_FORMAT: "Hora"
+  MINUTE_FORMAT: "Minuto"
+  SECONDS_FORMAT: "Segundo"
+  BAN_USAGE: "&cUtiliza: /ban <jugador> [duración] <razón> [-s]"
+  BAN_ALREADY_BANNED: "&cEste jugador ya está baneado."
+  BAN_TEMPORARY_MESSAGE: "Temporalmente"
+  BAN_PERMANENT_MESSAGE: "Permanentemente"
+  BAN_KICK_MESSAGE:
+    - ""
+    - "&cTu cuenta a sido baneada de &b&lNasgar &f&lNetwork"
+    - ""
+    - "&cBaneado por: &f<added_by>"
+    - "&cDuración: &f<duration>"
+    - "&cRazón: &f<reason>"
+    - ""
+    - "&cApela el ban en: &fhttps://ds.nasgar.online/"
+  BAN_PUBLIC_MESSAGE:
+    - "&a<banned> has sido baneado <context> por &b<added_by>."
+  BAN_SILENT_MESSAGE:
+    - "&7[Oculto] &a<banned> &7has sido baneado <context> por &b<added_by>&a."
+  BLACKLIST_USAGE: "&cUtiliza: /blacklist <jugador> <razón> [-s]"
+  BLACKLIST_ALREADY_BANNED: "&cEste jugador ya está baneado."
+  BLACKLIST_KICK_MESSAGE:
+    - ""
+    - "&cSu cuenta a sido incluida en la lista negra de &b&lNasgar &f&lNetwork."
+    - ""
+    - "&cBaneado por: &f<added_by>"
+    - "&cDuración: &f<duration>"
+    - "&cRazón: &f<reason>"
+    - ""
+    - "&cEste tipo de castigo es inapelable."
+  BLACKLIST_PUBLIC_MESSAGE:
+    - "&a<banned> &7has sido agregado a la lista negra por &b<added_by>"
+  BLACKLIST_SILENT_MESSAGE: 
+    - "&7[Oculto] &a<banned> &7has sido agregado a la lista negra por &b<added_by>"
+  WARN_USAGE: "&cUtiliza: /warn <jugador> <razón> [-s]"
+  WARN_MESSAGE:
+    - "&cHas sido advertido."
+    - "&cRazón: &f<reason>"
+    - "&cDuración: &f7 days."
+  WARN_PUBLIC_MESSAGE:
+    - "&a<banned> &7has sido advertido por &b<added_by>"
+  WARN_SILENT_MESSAGE:
+    - "&7[Oculto] &a<banned> &7has sido advertido por &b<added_by>&a."
+  UNWARN_USAGE: "&cUtiliza: /unwarn <jugador> <razón> [-s]"
+  UNWARN_NO_WARNS_YET: "&cEste jugador no tiene advertencias todavia."
+  UNWARN_MESSAGE:
+    - "&aSe eliminó una advertencia de su historial de castigos ^^."
+  UNWARN_PUBLIC_MESSAGE:
+    - "&a<banned> &7has sido desadvertido por &b<added_by>&a."
+  UNWARN_SILENT_MESSAGE:
+    - "&7[Oculto] &a<banned> &7has sido desadvertido por &b<added_by>&a."
+  UNMUTE_USAGE: "&cUtiliza: /unmute <jugador> <razón> [-s]"
+  UNMUTE_NO_WARNS_YET: "&cEste jugador no tiene mutes aún."
+  UNMUTE_MESSAGE:
+    - "&aPuedes volver a usar el chat ^^."
+  UNMUTE_PUBLIC_MESSAGE:
+    - "&a<banned> &7fuiste desmuteado por &b<added_by>&a."
+  UNMUTE_SILENT_MESSAGE:
+    - "&7[Oculto] &a<banned> &7fuiste desmuteado por &b<added_by>&a."
+  UNBAN_USAGE: "&cUtiliza : /unban <jugador> <razón> [-s]"
+  UNBAN_NO_BANS_YET: "&cEste jugador no tiene bans aún."
+  UNBAN_PUBLIC_MESSAGE:
+    - "&a<banned> &7has sido desbaneado por &b<added_by>&a."
+  UNBAN_SILENT_MESSAGE:
+    - "&7[Oculto] &a<banned> &7has sido desbaneado por &b<added_by>&a."
+  MUTE_USAGE: "&cUtiliza: /mute <jugador> <razón> [-s]"
+  MUTE_MESSAGE:
+    - "&cHas sido muteado"
+    - "&cRazón: &f<reason>"
+    - "&cDuración: &f<duration>."
+  MUTE_PUBLIC_MESSAGE:
+    - "&a<banned> &7has sido muteado por &b<added_by>&a."
+  MUTE_SILENT_MESSAGE:
+    - "&7[Oculto] &a<banned> &7has sido muteado por &b<added_by>&a."
+  KICK_USAGE: "&cUtiliza: /kick <jugador> <razón> [-s]"
+  KICK_NO_PLAYER: "&cJugador no encontrado."
+  KICK_MESSAGE:
+    - ""
+    - "&cHas sido kickeado de &b&lNasgar &f&lNetwork."
+    - ""
+    - "&cKickeado por: &f<added_by>"
+    - "&cRazón: &f<reason>"
+    - ""
+  KICK_PUBLIC_MESSAGE:
+    - "&a<banned> &7has sido kickeado por &b<added_by>&a."
+  KICK_SILENT_MESSAGE:
+    - "&7[Oculto] &a<banned> &7has sido kickeado por &b<added_by>&a."
+
+ALTS:
+  USAGE:
+    - "&cUtiliza: /alts <jugador>"
+  ALT_FORMAT: "&7- &a<alt_name> &7(<online>&7) &7(<banned>&7) &7(<muted>&7)"
+  ALT_BANNED_FORMAT: "&cBaneado"
+  ALT_NOT_BANNED_FORMAT: "&aSin castigos"
+  ALT_MUTED_FORMAT: "&cMuteado"
+  ALT_NOT_MUTED_FORMAT: "&aSin mutes"
+  ALT_ONLINE: "&aOnline"
+  ALT_OFFLINE: "&cOffline"
+  NO_ALTS: "&cEste jugador aún no tiene alt.."
+  ALT_MESSAGE:
+    - ""
+    - "&cAlt de jugador &a<player>"
+    - ""
+    - "<alt_format>"
+    - ""
+WIPE_PUNISHMENTS:
+  USAGE:
+    - "&cUtiliza: /wipepunishments <ban|blacklist|mute|warn|kick>"
+  INVALID_TYPE: "&cTipo de castigo no válido."
+  WIPED: "&aUn total de &c<total> &acastigos."
+
+STAFF_ROLLBACK:
+  USAGE:
+    - "&cUtiliza: /staffrollback <jugador> <tiempo>"
+  CLEARED_PUNISHMENTS: "&aUn total de &c<total> &acastigos removidos."
+
+FLY:
+  ENABLED: "&aFly habilitado."
+  DISABLED: "&cFly deshabilitado."
+
+CHAT:
+  DONOR_CHAT: "&8[&fDC&8] &7(&f<server>&7) &f<player>&7: &f<message>"
+  STAFF_CHAT: "&8[&bSC&8] &7(&f<server>&7) &f<player>&7: &b<message>"
+  ADMIN_CHAT: "&8[&cAC&8] &7(&f<server>&7) &f<player>&7: &c<message>"
+
+DONATOR_CHAT:
+  DISABLED: "&cDonatorchat deshabilitado."
+  ENABLED: "&aDonatorchat habilitado."
+
+ADMIN_CHAT:
+  DISABLED: "&cChat de admins deshabilitado."
+  ENABLED: "&aChat de admins habilitado."
+
+STAFF_CHAT:
+  DISABLED: "&cChat de staff deshabilitado."
+  ENABLED: "&aChat de staff habilitado."
+
+FREEZE:
+  USAGE:
+    - "&cUtiliza: /freeze <jugador>"
+  ALLOWED_COMMANDS:
+    - "/message"
+    - "/msg"
+    - "/tell"
+    - "/m"
+  FREEZE_MESSAGE:
+    - "&7"
+    - "&c&lHas sido congelado."
+    - ""
+    - "&7Siga instrucciones del staff."
+    - "&cDesconectarse: BAN PERMANENTE."
+    - ""
+  UNFREEZE_MESSAGE:
+    - "&7"
+    - "&c&lHAS SIDO DESCONGELADO."
+    - "&7"
+  LOGGED_OUT:
+    - "&7(&bCongelado&7) &a<player> &cse desconectó mientras estaba congelado."
+  FREEZE_MESSAGE_STAFF: "&7(&bCongelado&7) &f<player> &7fuiste congelado por &b<staff>&b."
+  UNFREEZE_MESSAGE_STAFF: "&7(&bCongelado&7) &f<player> &7fuiste descongelado por &b<staff>&b."
+  MESSAGE_WHEN:
+    - "00:30"
+    - "01:00"
+    - "01:30"
+    - "02:00"
+    - "02:30"
+    - "03:00"
+    - "03:30"
+    - "04:00"
+    - "04:30"
+    - "05:00"
+    - "06:00"
+    - "07:00"
+    - "08:00"
+    - "09:00"
+    - "10:00"
+    - "20:00"
+    - "30:00"
+    - "40:00"
+    - "50:00"
+  FREEZE_TIMER_MESSAGE: "&7(&bCongelado&7) &a<player> &7está congelado. &7(Tiempo: <time>)"
+
+VANISH:
+  ENABLED: "&aVanish hanilitado."
+  DISABLED: "&cVanish deshabilitado."
+
+STAFFMODE:
+  ENABLED: "&aModo Staff habilitado."
+  DISABLED: "&cModo Staff deshabilitado."
+
+SPEED:
+  RESET: "&aTu velocidad de vuelo no es normal."
+  TO_10: "&aTu velocidad de vuelo ahora es de: 10"
+  TO_8: "&aTu velocidad de vuelo ahora es de: 8"
+  TO_6: "&aTu velocidad de vuelo ahora es de: 6"
+  TO_4: "&aTu velocidad de vuelo ahora es de: 4"
+  TO_2: "&aTu velocidad de vuelo ahora es de: 2"

@@ -19,6 +19,7 @@ import me.fckml.staffcore.redis.packets.ChatPacket;
 import me.fckml.staffcore.redis.packets.StaffJoinedPacket;
 import me.fckml.staffcore.redis.packets.StaffLeftPacket;
 import me.fckml.staffcore.redis.packets.StaffSwitchedPacket;
+import me.fckml.staffcore.utils.config.ConfigFile;
 import redis.clients.jedis.Jedis;
 import redis.clients.jedis.JedisPool;
 import redis.clients.jedis.JedisPoolConfig;
@@ -43,6 +44,13 @@ public class CoreRedisDatabase {
 
     private Map<String, Class> idToType;
     private Map<Class, String> typeToId;
+    
+    ConfigFile configFile = StaffCore.getInstance().getConfigFile();
+
+    String ip = configFile.getString("REDIS.IP");
+    int port = configFile.getInteger("REDIS.PORT");
+    String password = configFile.getString("REDIS.PASSWORD");
+    String channel = configFile.getString("REDIS.CHANNEL");
 
     public CoreRedisDatabase() {
         instance = this;
@@ -60,12 +68,10 @@ public class CoreRedisDatabase {
         config.setMinEvictableIdleTimeMillis(60000L);
         config.setTimeBetweenEvictionRunsMillis(30000L);
 
-        String password = StaffCore.getInstance().getConfigFile().getString("REDIS.PASSWORD");
-
         if (password != null && !password.isEmpty()) {
-            this.redisPool = new JedisPool(config, "127.0.0.1", 6379, 30000, password);
+            this.redisPool = new JedisPool(config, ip, port, 30000, password);
         } else {
-            this.redisPool = new JedisPool(config, "127.0.0.1", 6379, 30000);
+            this.redisPool = new JedisPool(config, ip, port, 30000);
         }
 
         this.setupPubSub();
@@ -85,12 +91,10 @@ public class CoreRedisDatabase {
             if (object == null) {
                 throw new IllegalStateException("Packet cannot generate null serialized data");
             }
-
-            String password = StaffCore.getInstance().getConfigFile().getString("REDIS.PASSWORD");
-
+            
             try (Jedis jedis = this.redisPool.getResource()) {
                 if (password != null && !password.isEmpty()) jedis.auth(password);
-                jedis.publish("Core", packet.id() + ";" + object.toString());
+                jedis.publish(configFile.getString("REDIS.CHANNEL"), packet.id() + ";" + object.toString());
             }
         } catch (Exception e) {
             if (exceptionHandler != null) {
@@ -141,7 +145,7 @@ public class CoreRedisDatabase {
         this.jedisPubSub = new JedisPubSub() {
             @Override
             public void onMessage(String channel, String message) {
-                if (channel.equalsIgnoreCase("Core")) {
+                if (channel.equalsIgnoreCase(configFile.getString("REDIS.CHANNEL"))) {
                     try {
                         String[] args = message.split(";");
                         Packet packet = CoreRedisDatabase.this.buildPacket(args[0]);
@@ -167,7 +171,7 @@ public class CoreRedisDatabase {
                 Jedis jedis = this.redisPool.getResource();
 
                 if (password != null && !password.isEmpty()) jedis.auth(password); // REMOVE THIS LINE IN CASE THAT YOUR REDIS HAS NO PASSWORD
-                jedis.subscribe(this.jedisPubSub, "Core");
+                jedis.subscribe(this.jedisPubSub, configFile.getString("REDIS.CHANNEL"));
             } catch (Exception e) {
                 e.printStackTrace();
             }

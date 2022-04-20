@@ -1,9 +1,7 @@
 SERVER:
-  NAME: Default
-  GROUP: Survival
-  JOINED: "&b[S] &3<player> &7has &ajoined &7to &b<server>&7."
-  LEFT: "&b[S] &3<player> &7has &cleft&7 the network."
-  SWITCHED: "&b[S] &3<player> &7has &aswitched &7from &b<server> &7to &b<newserver>&7."
+  JOINED: "&b[S] &3<player> &7has &ajoined &7to &d<server>&7."
+  LEFT: "&b[S] &3<player> &7has &cleft &7the network."
+  SWITCHED: "&b[S] &3<player> &7has &aswitched &7from &d<server> &7to &d<newserver>&7."
 
 COMMAND:
   NO_PERMISSION: "&cYou don't have enough permissions to run this command."
@@ -23,22 +21,22 @@ PUNISHMENT:
   BAN_PERMANENT_MESSAGE: "permanently"
   BAN_KICK_MESSAGE:
     - ""
-    - "&cYour account has been <context> banned CadiaMC Network."
+    - "&cYour account has been <context> banned &b&lNasgar &f&lNetwork."
     - ""
     - "&cBanned By: &f<added_by>"
     - "&cDuration: &f<duration>"
     - "&cReason: &f<reason>"
     - ""
-    - "&cAppeal at: &fwww.cadiamc.net"
+    - "&cAppeal at: &fhttps://ds.nasgar.online/"
   BAN_PUBLIC_MESSAGE:
-    - "&e<banned> &ahas been banned <context> by &c<added_by>&a."
+    - "&a<banned> &7has been banned <context> by &b<added_by>."
   BAN_SILENT_MESSAGE:
-    - "&7[Silent] &e<banned> &ahas been banned <context> by &c<added_by>&a."
-  BLACKLIST_USAGE: "Usage: /blacklist <player> <reason> [-s]"
+    - "&7[Silent] &a<banned> &7has been banned <context> by &b<added_by>&a."
+  BLACKLIST_USAGE: "&cUsage: /blacklist <player> <reason> [-s]"
   BLACKLIST_ALREADY_BANNED: "&cThat player is already banned."
   BLACKLIST_KICK_MESSAGE:
     - ""
-    - "&cYour account has been blacklisted from CadiaMC Network."
+    - "&cYour account has been blacklisted from &b&lNasgar &f&lNetwork."
     - ""
     - "&cBanned By: &f<added_by>"
     - "&cDuration: &f<duration>"
@@ -46,109 +44,77 @@ PUNISHMENT:
     - ""
     - "&cThis type of punishment cannot be appealed."
   BLACKLIST_PUBLIC_MESSAGE:
-    - "&e<banned> &ahas been blacklisted by &c<added_by>&a."
+    - "&a<banned> &7has been blacklisted by &b<added_by>&a."
   BLACKLIST_SILENT_MESSAGE:
-    - "&7[Silent] &e<banned> &ahas been blacklisted by &c<added_by>&a."
+    - "&7[Silent] &a<banned> &7has been blacklisted by &b<added_by>&a."
   WARN_USAGE: "&cUsage: /warn <player> <reason> [-s]"
   WARN_MESSAGE:
     - "&cYou have been warned."
     - "&cReason: &f<reason>"
     - "&cDuration: &f7 days."
   WARN_PUBLIC_MESSAGE:
-    - "&e<banned> &ahas been warned by &c<added_by>&a."
+    - "&a<banned> &7has been warned by &b<added_by>&a."
   WARN_SILENT_MESSAGE:
-    - "&7[Silent] &e<banned> &ahas been warned by &c<added_by>&a."
+    - "&7[Silent] &a<banned> &7has been warned by &b<added_by>&a."
   UNWARN_USAGE: "&cUsage: /unwarn <plaer> <reason> [-s]"
   UNWARN_NO_WARNS_YET: "&cThis player has no warns yet."
   UNWARN_MESSAGE:
-    - "&aA warning from your punishment history has been removed."
+    - "&aA warning from your punishment history has been removed ^^."
   UNWARN_PUBLIC_MESSAGE:
-    - "&e<banned> &ahas been unwarned by &c<added_by>&a."
+    - "&a<banned> &7has been unwarned by &b<added_by>."
   UNWARN_SILENT_MESSAGE:
-    - "&7[Silent] &e<banned> &ahas been unwarned by &c<added_by>&a."
+    - "&7[Silent] &a<banned> &7has been unwarned by &b<added_by>&a."
   UNMUTE_USAGE: "&cUsage: /unmute <player> <reason> [-s]"
   UNMUTE_NO_WARNS_YET: "&cThis player has no mutes yet."
   UNMUTE_MESSAGE:
-    - "&aYou are able to use the chat again."
+    - "&aYou are able to use the chat again ^^."
   UNMUTE_PUBLIC_MESSAGE:
-    - "&e<banned> &ahas been unmuted by &c<added_by>&a."
+    - "&a<banned> &7has been unmuted by &b<added_by>&a."
   UNMUTE_SILENT_MESSAGE:
-    - "&7[Silent] &e<banned> &ahas been unmuted by &c<added_by>&a."
+    - "&7[Silent] &a<banned> &7has been unmuted by &b<added_by>&a."
   UNBAN_USAGE: "&cUsage: /unban <player> <reason> [-s]"
   UNBAN_NO_BANS_YET: "&cThis player has no bans yet."
   UNBAN_PUBLIC_MESSAGE:
-    - "&e<banned> &ahas been unbanned by &c<added_by>&a."
+    - "&a<banned> &7has been unbanned by &b<added_by>&a."
   UNBAN_SILENT_MESSAGE:
-    - "&7[Oculto] &e<banned> &ahas been unbanned by &c<added_by>&a."
+    - "&7[Oculto] &a<banned> &7has been unbanned by &b<added_by>&a."
   MUTE_USAGE: "&cUsage: /mute <player> <reason> [-s]"
   MUTE_MESSAGE:
     - "&cYou have been muted"
     - "&cReason: &f<reason>"
     - "&cDuration: &f<duration>."
   MUTE_PUBLIC_MESSAGE:
-    - "&e<banned> &ahas been muted by &c<added_by>&a."
+    - "&a<banned> &ahas been muted by &b<added_by>&a."
   MUTE_SILENT_MESSAGE:
-    - "&7[Silent] &e<banned> &ahas been muted by &c<added_by>&a."
+    - "&7[Silent] &a<banned> &7has been muted by &b<added_by>&a."
   KICK_USAGE: "&cUsage: /kick <player> <reason> [-s]"
   KICK_NO_PLAYER: "&cJugador no encontrado."
   KICK_MESSAGE:
     - ""
-    - "&cYou have been kicked from CadiaMC Network."
+    - "&cYou have been kicked from &b&lNasgar &f&lNetwork."
     - ""
     - "&cKicked By: &f<added_by>"
     - "&cReason: &f<reason>"
     - ""
   KICK_PUBLIC_MESSAGE:
-    - "&e<banned> &aha sido silenciado por &c<added_by>&a."
+    - "&a<banned> &ahave been kicked by &b<added_by>&a."
   KICK_SILENT_MESSAGE:
-    - "&7[Oculto] &e<banned> &aha sido silenciado por &c<added_by>&a."
-  PUNISH_SELECTOR_MENU:
-    TITLE: "&cSelect a type of punishment"
-    SLOTS: 27
-    BUTTONS:
-      BAN:
-        TITLE: "&eBans"
-        MATERIAL: BEDROCK
-        DATA: 0
-        TYPE: BAN
-        LORE:
-          - "&e"
-  PUNISH_MENU:
-    TITLE: "&cPunishments - <total>"
-    SLOTS: 27
-    BUTTON:
-      TITLE: "&e<punishment_type>"
-      MATERIAL: DIAMOND
-      DATA: 0
-      LORE:
-        - "&7&m-----------------------"
-        - "&eAdded by: &7<banned_by>"
-        - "  "
-        - "&eDate: &7<date>"
-        - "&eReason: &7<reason>"
-        - "&7&m-----------------------"
-      EXPIRED_LORE:
-        - "&ePunishment Expired."
-        - "&7&m-----------------------"
-      REMOVED_LORE:
-        - "&eRemoved by: &7<removed_by>"
-        - "&eDate: &7<removed_date>"
-        - "&eReason: &7<removed_reason>"
-        - "&7&m-----------------------"
+    - "&7[Oculto] &e<banned> &ahave been kicked by &c<added_by>&a."
+
 ALTS:
   USAGE:
     - "&cUsage: /alts <player>"
-  ALT_FORMAT: "&7- &e<alt_name> &7(<online>&7) &7(<banned>&7) &7(<muted>&7)"
+  ALT_FORMAT: "&7- &a<alt_name> &7(<online>&7) &7(<banned>&7) &7(<muted>&7)"
   ALT_BANNED_FORMAT: "&cBanned"
-  ALT_NOT_BANNED_FORMAT: "No Punishments"
+  ALT_NOT_BANNED_FORMAT: "&aNo Punishments"
   ALT_MUTED_FORMAT: "&cMuted"
-  ALT_NOT_MUTED_FORMAT: "No Mutes"
+  ALT_NOT_MUTED_FORMAT: "&aNo Mutes"
   ALT_ONLINE: "&aOnline"
   ALT_OFFLINE: "&cOffline"
   NO_ALTS: "&cThis player has no alts yet."
   ALT_MESSAGE:
     - ""
-    - "&cAlt of players &e<player>"
+    - "&cAlt of player &a<player>"
     - ""
     - "<alt_format>"
     - ""
@@ -156,21 +122,21 @@ WIPE_PUNISHMENTS:
   USAGE:
     - "&cUsage: /wipepunishments <ban|blacklist|mute|warn|kick>"
   INVALID_TYPE: "&cInvalid punishment type."
-  WIPED: "&aA total of &e<total> &epunishments."
+  WIPED: "&aA total of &c<total> &apunishments."
 
 STAFF_ROLLBACK:
   USAGE:
     - "&cUsage: /staffrollback <player> <time>"
-  CLEARED_PUNISHMENTS: "&aA total of &e<total> &epunishments have been removed."
+  CLEARED_PUNISHMENTS: "&aA total of &c<total> &apunishments have been removed."
 
 FLY:
   ENABLED: "&aFly enabled."
   DISABLED: "&cFly disabled."
 
 CHAT:
-  DONOR_CHAT: "&7[DC] &f(<server>) <player>&7: &f<message>"
-  STAFF_CHAT: "&b[S] &f(<server>) <player>&7: &f<message>"
-  ADMIN_CHAT: "&c[AC] &f(<server>) <player>&7: &f<message>"
+  DONOR_CHAT: "&8[&fDC&8] &7(&f<server>&7) &f<player>&7: &f<message>"
+  STAFF_CHAT: "&8[&bSC&8] &7(&f<server>&7) &f<player>&7: &b<message>"
+  ADMIN_CHAT: "&8[&cAC&8] &7(&f<server>&7) &f<player>&7: &c<message>"
 
 DONATOR_CHAT:
   DISABLED: "&cSuccessfully disabled donatorchat."
@@ -194,9 +160,9 @@ FREEZE:
     - "/m"
   FREEZE_MESSAGE:
     - "&7"
-    - "&c&lYOU HAVE BEEN FROZEN."
+    - "&b&lYOU HAVE BEEN FROZEN."
     - ""
-    - "&7Follow staff instructions."
+    - "&fFollow staff instructions."
     - "&cLogging out: PERMANENT BAN."
     - ""
   UNFREEZE_MESSAGE:
@@ -204,9 +170,9 @@ FREEZE:
     - "&c&lYOU HAVE BEEN UN-FROZEN."
     - "&7"
   LOGGED_OUT:
-    - "&7(Freeze) &f<player> &chas logged out while frozen."
-  FREEZE_MESSAGE_STAFF: "&7(Freeze) &f<player> &bhas been frozen by &f<staff>&b."
-  UNFREEZE_MESSAGE_STAFF: "&7(Freeze) &f<player> &bhas been unfrozen by &f<staff>&b."
+    - "&7(&bFreeze&7) &a<player> &chas logged out while frozen."
+  FREEZE_MESSAGE_STAFF: "&7(&bFreeze&7) &f<player> &7has been frozen by &b<staff>&b."
+  UNFREEZE_MESSAGE_STAFF: "&7(&bFreeze&7) &f<player> &7has been unfrozen by &b<staff>&b."
   MESSAGE_WHEN:
     - "00:30"
     - "01:00"
@@ -227,7 +193,7 @@ FREEZE:
     - "30:00"
     - "40:00"
     - "50:00"
-  FREEZE_TIMER_MESSAGE: "&7(Freeze) &f<player> &bis frozen. &7(Timer: <time>)"
+  FREEZE_TIMER_MESSAGE: "&7(&bFreeze&7) &a<player> &7is frozen. &7(Timer: <time>)"
 
 VANISH:
   ENABLED: "&aVanish successfully enabled."
