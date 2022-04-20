@@ -37,7 +37,10 @@ public class CoreMongoDatabase {
     public CoreMongoDatabase() {
         instance = this;
 
-        this.mongoClient = new MongoClient(new ServerAddress(ip, port), MongoCredential.createCredential(user, database, password.toCharArray()), MongoClientOptions.builder().build());
+        this.mongoClient = new MongoClient(new ServerAddress(ip, port),
+                MongoCredential.createCredential(
+                        user, database, password.toCharArray()),
+                MongoClientOptions.builder().build());
         this.mongoDatabase = this.mongoClient.getDatabase(database);
 
         this.grants = this.mongoDatabase.getCollection("grants");

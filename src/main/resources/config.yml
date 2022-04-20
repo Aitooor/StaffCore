@@ -1,8 +1,8 @@
 REDIS:
   IP: "localhost"
   PORT: 6379
-  CHANNEL: Core
   PASSWORD: ""
+  CHANNEL: "StaffCore"
 
 MONGO:
   IP: "localhost"
