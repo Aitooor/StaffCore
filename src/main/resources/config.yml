@@ -1,19 +1,18 @@
 REDIS:
   IP: "localhost"
   PORT: 6379
-  PASSWORD: ""
+  PASSWORD: "e44fuT2mQM2hr437N5DTA99rK8xW8RhRAMmSm9LQ4FcnXx7bf5e8VpwXKquYzBvTpnKjUTthqq3"
   CHANNEL: "StaffCore"
 
 MONGO:
   IP: "localhost"
   PORT: 27017
-  USER: "root"
-  PASSWORD: ""
+  USER: "usrcx_local54"
+  PASSWORD: "ZR9xye5J5R5J9BdLcykq9fGfLkS9dvFVptzmBZRMm2hzb6erTARH9RysXkCpVmvSZtEGh3rf3V3"
   DATABASE: "StaffCore"
 
 SERVER:
-  NAME: Default
-  GROUP: Survival
+  GROUP: Server-1
 
 PUNISHMENT:
   PUNISH_SELECTOR_MENU:
