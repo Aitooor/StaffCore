@@ -133,7 +133,9 @@ public class StaffModeManager implements Listener {
 
         player.setGameMode(GameMode.SURVIVAL);
 
-        player.getInventory().setContents(this.itemMap.remove(player.getUniqueId()));
+        if(this.itemMap.containsKey(player.getUniqueId())) {
+            player.getInventory().setContents(this.itemMap.remove(player.getUniqueId()));
+        }
         player.getInventory().setArmorContents(this.armorMap.remove(player.getUniqueId()));
 
         this.setVanished(player, false);
