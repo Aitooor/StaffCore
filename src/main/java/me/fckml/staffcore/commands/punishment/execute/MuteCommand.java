@@ -57,7 +57,7 @@ public class MuteCommand extends BaseCommand {
         punishment = new Punishment();
 
         long duration = TimeUtils.parse(args[1]);
-        String reason = (duration <= 0? StringUtils.getFromArray(args, 1) : StringUtils.getFromArray(args, 2));
+        String reason = StringUtils.getFromArray(args, 1);
         boolean isPublic = reason.contains(" -s");
 
         punishment.setUuid(UUID.randomUUID());
