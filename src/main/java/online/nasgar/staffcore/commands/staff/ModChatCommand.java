@@ -13,7 +13,7 @@ import java.util.Arrays;
 public class ModChatCommand extends BaseCommand {
 
     public ModChatCommand() {
-        super("modchat", Arrays.asList("md"),"core.modchat");
+        super("modchat", Arrays.asList("mc"),"core.modchat");
     }
 
     @Override
