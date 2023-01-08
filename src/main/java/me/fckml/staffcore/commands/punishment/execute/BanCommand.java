@@ -34,7 +34,7 @@ public class BanCommand extends BaseCommand {
         }
 
         if (args.length < 2 && sender instanceof Player) {
-            StaffCore.getInstance().getMessageHandler().send(sender, "PUNISHMENT.BAN_USAGE");
+            sender.sendMessage(CC.translate(StaffCore.getInstance().getConfigFile().getString("PUNISHMENT.BAN_USAGE")));
             return;
         }
 
@@ -50,7 +50,7 @@ public class BanCommand extends BaseCommand {
                 return;
             }
 
-            StaffCore.getInstance().getMessageHandler().send(sender, "PUNISHMENT.BAN_ALREADY_BANNED");
+            sender.sendMessage(CC.translate(StaffCore.getInstance().getConfigFile().getString("PUNISHMENT.BAN_ALREADY_BANNED")));
             return;
         }
 

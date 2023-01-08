@@ -9,7 +9,6 @@ import me.fckml.staffcore.punishment.PunishmentType;
 import me.fckml.staffcore.utils.CC;
 import me.fckml.staffcore.utils.StringUtils;
 import me.fckml.staffcore.utils.TimeUtils;
-import me.yushust.message.util.StringList;
 import org.bukkit.Bukkit;
 import org.bukkit.OfflinePlayer;
 import org.bukkit.command.CommandSender;
@@ -51,9 +50,7 @@ public class MuteCommand extends BaseCommand {
             }
 
             Profile profile = Profile.getProfileByUUID(((Player) sender).getUniqueId());
-
-            String message = StaffCore.getInstance().getMessageHandler().get(sender, "PUNISHMENT.MUTE_ALREADY_MUTED");
-            sender.sendMessage(CC.translate(message));
+            sender.sendMessage(CC.translate(StaffCore.getInstance().getConfigFile().getString("PUNISHMENT.MUTE_ALREADY_MUTED")));
             return;
         }
 

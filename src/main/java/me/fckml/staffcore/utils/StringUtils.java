@@ -15,7 +15,7 @@ import java.util.concurrent.TimeUnit;
 import java.util.regex.Pattern;
 import java.util.stream.IntStream;
 
-import static org.apache.commons.lang.time.DurationFormatUtils.formatDuration;
+import static org.apache.commons.lang3.time.DurationFormatUtils.formatDuration;
 
 public class StringUtils {
 

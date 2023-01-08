@@ -49,8 +49,7 @@ public class UnMuteCommand extends BaseCommand {
 
             Profile profile = Profile.getProfileByUUID(((Player) sender).getUniqueId());
 
-            String message = StaffCore.getInstance().getMessageHandler().get(sender, "PUNISHMENT.UNMUTE_NO_WARNS_YET");
-            sender.sendMessage(CC.translate(message));
+            sender.sendMessage(CC.translate(StaffCore.getInstance().getConfigFile().getString("PUNISHMENT.UNMUTE_NO_WARNS_YET")));
             return;
         }
 

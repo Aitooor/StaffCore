@@ -20,7 +20,7 @@ public class ProfilePacketListener implements PacketListener {
             if (!player.hasPermission("core.staff")) continue;
             Profile profile = Profile.getProfileByUUID(player.getUniqueId());
 
-            StaffCore.getInstance().getMessageHandler().getMany(player, "SERVER.JOINED").getContents().forEach(line -> player.sendMessage(CC.translate(line.replace("<server>", packet.getServer()).replace("<player>", packet.getName()))));
+            player.sendMessage(CC.translate(StaffCore.getInstance().getConfigFile().getString("SERVER.JOINED").replace("<server>", packet.getServer()).replace("<player>", packet.getName())));
         }
 
         Bukkit.getConsoleSender().sendMessage(CC.translate("&b[S] &3" + packet.getName() + " &7has &ajoined &7to &b" + packet.getServer() + "&7."));
@@ -32,7 +32,7 @@ public class ProfilePacketListener implements PacketListener {
             if (!player.hasPermission("core.staff")) continue;
             Profile profile = Profile.getProfileByUUID(player.getUniqueId());
 
-            StaffCore.getInstance().getMessageHandler().getMany(player, "SERVER.LEFT").getContents().forEach(line -> player.sendMessage(CC.translate(line.replace("<server>", packet.getServer()).replace("<player>", packet.getName()))));
+            player.sendMessage(CC.translate(StaffCore.getInstance().getConfigFile().getString("SERVER.LEFT").replace("<server>", packet.getServer()).replace("<player>", packet.getName())));
         }
 
         Bukkit.getConsoleSender().sendMessage(CC.translate("&b[S] &3" + packet.getName() + " &7has &cleft &7left the network."));
@@ -44,7 +44,7 @@ public class ProfilePacketListener implements PacketListener {
             if (!player.hasPermission("core.staff")) continue;
             Profile profile = Profile.getProfileByUUID(player.getUniqueId());
 
-            StaffCore.getInstance().getMessageHandler().getMany(player, "SERVER.SWITCHED").getContents().forEach(line -> player.sendMessage(CC.translate(line.replace("<newserver>", packet.getNewServer()).replace("<server>", packet.getServer()).replace("<player>", packet.getName()))));
+            player.sendMessage(CC.translate(StaffCore.getInstance().getConfigFile().getString("SERVER.SWITCHED").replace("<newserver>", packet.getNewServer()).replace("<server>", packet.getServer()).replace("<player>", packet.getName())));
         }
 
         Bukkit.getConsoleSender().sendMessage(CC.translate("&b[S] &3" + packet.getName() + " &7has &7has &aswitched &7from &b" + packet.getServer() + " &7to &b" + packet.getNewServer() + "&7."));
@@ -55,7 +55,7 @@ public class ProfilePacketListener implements PacketListener {
         for (Player player : Bukkit.getOnlinePlayers()) {
             Profile profile = Profile.getProfileByUUID(player.getUniqueId());
             if (!player.hasPermission("core." + profile.getChat().getPermission())) continue;
-            String chat = StaffCore.getInstance().getMessageHandler().get(player, "CHAT." + profile.getChat().name());
+            String chat = StaffCore.getInstance().getConfigFile().getString("CHAT." + profile.getChat().name());
 
             player.sendMessage(CC.translate(chat.replace("<player>", packet.getName()).replace("<server>", packet.getServer()).replace("<message>", packet.getMessage())));
         }

@@ -31,8 +31,7 @@ public class UnBanCommand extends BaseCommand {
         if (args.length < 2 && sender instanceof Player) {
             Profile profile = Profile.getProfileByUUID(((Player) sender).getUniqueId());
 
-            String message = StaffCore.getInstance().getMessageHandler().get(sender, "PUNISHMENT.UNBAN_USAGE");
-            sender.sendMessage(CC.translate(message));
+            sender.sendMessage(CC.translate(StaffCore.getInstance().getConfigFile().getString("PUNISHMENT.UNBAN_USAGE")));
             return;
         }
 
@@ -48,8 +47,7 @@ public class UnBanCommand extends BaseCommand {
                 return;
             }
 
-            String message = StaffCore.getInstance().getMessageHandler().get(sender, "PUNISHMENT.UNBAN_NO_BANS_YET");
-            sender.sendMessage(CC.translate(message));
+            sender.sendMessage(CC.translate(StaffCore.getInstance().getConfigFile().getString("PUNISHMENT.UNBAN_NO_BANS_YET")));
             return;
         }
 

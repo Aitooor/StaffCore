@@ -33,7 +33,7 @@ public class BlacklistCommand extends BaseCommand {
         }
 
         if (args.length < 2 && sender instanceof Player) {
-            StaffCore.getInstance().getMessageHandler().send(sender, "PUNISHMENT.BLACKLIST_USAGE");
+            sender.sendMessage(CC.translate(StaffCore.getInstance().getConfigFile().getString("PUNISHMENT.BLACKLIST_USAGE")));
             return;
         }
 
@@ -49,7 +49,7 @@ public class BlacklistCommand extends BaseCommand {
                 return;
             }
 
-            StaffCore.getInstance().getMessageHandler().send(sender, "PUNISHMENT.BLACKLIST_ALREADY_BANNED");
+            sender.sendMessage(CC.translate(StaffCore.getInstance().getConfigFile().getString("PUNISHMENT.BLACKLIST_ALREADY_BANNED")));
             return;
         }
 

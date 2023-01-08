@@ -4,7 +4,6 @@ import me.fckml.staffcore.StaffCore;
 import me.fckml.staffcore.commands.BaseCommand;
 import me.fckml.staffcore.profile.Profile;
 import me.fckml.staffcore.utils.CC;
-import me.yushust.message.util.StringList;
 import org.bukkit.Bukkit;
 import org.bukkit.OfflinePlayer;
 import org.bukkit.command.CommandSender;
@@ -31,8 +30,7 @@ public class AltsCommand extends BaseCommand {
         if (args.length < 1 && sender instanceof Player) {
             Profile profile = Profile.getProfileByUUID(((Player) sender).getUniqueId());
 
-            StringList message = StaffCore.getInstance().getMessageHandler().getMany(sender, "ALTS.USAGE");
-            message.getContents().forEach(line -> sender.sendMessage(CC.translate(line)));
+            StaffCore.getInstance().getConfigFile().getStringList("ALTS.USAGE").forEach(message -> sender.sendMessage(CC.translate(message)));
             return;
         }
 
@@ -68,18 +66,15 @@ public class AltsCommand extends BaseCommand {
         Profile profile = Profile.getProfileByUUID(((Player) sender).getUniqueId());
 
         if (targetProfile.getAlts().isEmpty()) {
-            String message = StaffCore.getInstance().getMessageHandler().get(sender, "ALTS.NO_ALTS");
-            sender.sendMessage(CC.translate(message));
+            sender.sendMessage(CC.translate(StaffCore.getInstance().getConfigFile().getString("ALTS.NO_ALTS")));
             return;
         }
 
-        StringList message = StaffCore.getInstance().getMessageHandler().getMany(sender, "ALTS.ALT_MESSAGE");
+        StaffCore.getInstance().getConfigFile().getStringList("ALTS.ALT_MESSAGE").forEach(message -> {
+            message = message.replace("<player>", args[0]);
 
-        message.getContents().forEach(line -> {
-            line = line.replace("<player>", args[0]);
-
-            if (line.equalsIgnoreCase("<alt_format>")) {
-                String format = StaffCore.getInstance().getMessageHandler().get(sender, "ALTS.ALT_FORMAT");
+            if (message.equalsIgnoreCase("<alt_format>")) {
+                String format = StaffCore.getInstance().getConfigFile().getString("ALTS.ALT_FORMAT");
 
                 for (UUID id : targetProfile.getAlts()) {
                     OfflinePlayer altPlayer = Bukkit.getOfflinePlayer(id);
@@ -97,7 +92,7 @@ public class AltsCommand extends BaseCommand {
                 return;
             }
 
-            sender.sendMessage(CC.translate(line));
+            sender.sendMessage(CC.translate(message));
         });
     }
 }
