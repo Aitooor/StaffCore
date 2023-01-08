@@ -4,7 +4,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>me.fckml</groupId>
+    <groupId>online.nasgar</groupId>
     <artifactId>StaffCore</artifactId>
     <version>1.8</version>
 
@@ -75,7 +75,7 @@
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
-            <version>1.18.18</version>
+            <version>1.18.24</version>
         </dependency>
 
         <dependency>
@@ -95,7 +95,7 @@
         <dependency>
             <groupId>org.mongodb</groupId>
             <artifactId>mongodb-driver</artifactId>
-            <version>3.12.10</version>
+            <version>3.12.11</version>
             <scope>compile</scope>
         </dependency>
 
@@ -103,7 +103,8 @@
         <dependency>
             <groupId>redis.clients</groupId>
             <artifactId>jedis</artifactId>
-            <version>2.9.0</version>
+            <version>4.3.1</version>
+            <scope>compile</scope>
         </dependency>
     </dependencies>
 </project>

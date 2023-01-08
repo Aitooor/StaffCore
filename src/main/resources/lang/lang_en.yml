@@ -134,13 +134,13 @@ FLY:
   DISABLED: "&cFly disabled."
 
 CHAT:
-  DONOR_CHAT: "&8[&fDC&8] &7(&f<server>&7) &f<player>&7: &f<message>"
-  STAFF_CHAT: "&8[&bSC&8] &7(&f<server>&7) &f<player>&7: &b<message>"
+  STAFF_CHAT: "&8[&aSC&8] &7(&f<server>&7) &f<player>&7: &b<message>"
+  MOD_CHAT: "&8[&bMC&8] &7(&f<server>&7) &f<player>&7: &c<message>"
   ADMIN_CHAT: "&8[&cAC&8] &7(&f<server>&7) &f<player>&7: &c<message>"
 
-DONATOR_CHAT:
-  DISABLED: "&cSuccessfully disabled donatorchat."
-  ENABLED: "&aSuccessfully enabled donatorchat."
+MOD_CHAT:
+  DISABLED: "&cSuccessfully disabled mod chat."
+  ENABLED: "&aSuccessfully enabled mod chat."
 
 ADMIN_CHAT:
   DISABLED: "&cSuccessfully disabled admin chat."
