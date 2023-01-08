@@ -105,13 +105,13 @@ public class StaffModeManager implements Listener {
 
             player.setGameMode(GameMode.CREATIVE);
 
-            player.getInventory().setItem(0, new ItemBuilder(Material.INK_SACK).durability(10).name("&b&lVanish &7(&aON&7)").build());
+            player.getInventory().setItem(0, new ItemBuilder(Material.GRAY_DYE).durability(10).name("&b&lVanish &7(&aON&7)").build());
 
             player.getInventory().setItem(2, new ItemBuilder(Material.REDSTONE).name("&cDisable Staff Mode &7(Right Click)").build());
             player.getInventory().setItem(3, new ItemBuilder(Material.SUGAR).name("&bSpeed &7(Right Click)").build());
             player.getInventory().setItem(4, new ItemBuilder(Material.NETHER_STAR).name("&eFly &7(Right Click)").build());
             player.getInventory().setItem(5, new ItemBuilder(Material.PACKED_ICE).name("&bFreeze &7(Right Click)").build());
-            player.getInventory().setItem(6, new ItemBuilder(Material.SKULL_ITEM).setOwner(player.getName()).name("&bOnline Staff &7(Right Click)").build());
+            player.getInventory().setItem(6, new ItemBuilder(Material.PLAYER_HEAD).setOwner(player.getName()).name("&bOnline Staff &7(Right Click)").build());
 
             player.getInventory().setItem(8, new ItemBuilder(Material.CHEST).name("&bCore Protect Addon &7(Right Click)").build());
 
@@ -178,17 +178,16 @@ public class StaffModeManager implements Listener {
         if (stack == null) return;
 
         switch (stack.getType()) {
-            case INK_SACK: {
-                if (player.getItemInHand().getDurability() == 10) {
-                    player.getInventory().setItem(0, new ItemBuilder(Material.INK_SACK).durability(8).name("&b&lVanish &7(&cOFF&7)").build());
-
-                    this.setVanished(player, false);
-                    return;
-                }
-
-                player.getInventory().setItem(0, new ItemBuilder(Material.INK_SACK).durability(10).name("&b&lVanish &7(&aON&7)").build());
+            case GRAY_DYE: {
+                player.getInventory().setItem(0, new ItemBuilder(Material.GREEN_DYE).durability(10).name("&b&lVanish &7(&aON&7)").build());
 
                 this.setVanished(player, true);
+                return;
+            }
+            case GREEN_DYE: {
+                player.getInventory().setItem(0, new ItemBuilder(Material.GRAY_DYE).durability(8).name("&b&lVanish &7(&cOFF&7)").build());
+
+                this.setVanished(player, false);
                 return;
             }
             case REDSTONE: {
@@ -234,14 +233,14 @@ public class StaffModeManager implements Listener {
                 player.performCommand("co i");
                 return;
             }
-            case SKULL_ITEM: {
+            case PLAYER_HEAD: {
                 Tasks.runAsyncTask(() -> {
                     Inventory inventory = Bukkit.createInventory(null, 27, CC.translate("Staff Online"));
 
                     for (Player online : Bukkit.getOnlinePlayers()) {
                         if (!online.hasPermission("core.staff")) continue;
 
-                        inventory.addItem(new ItemBuilder(Material.SKULL_ITEM).durability(3).setOwner(online.getName()).name("&b" + online.getName()).build());
+                        inventory.addItem(new ItemBuilder(Material.PLAYER_HEAD).durability(3).setOwner(online.getName()).name("&b" + online.getName()).build());
                     }
 
                     player.openInventory(inventory);
