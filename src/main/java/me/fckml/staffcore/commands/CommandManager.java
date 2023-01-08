@@ -6,7 +6,10 @@ import me.fckml.staffcore.commands.punishment.AltsCommand;
 import me.fckml.staffcore.commands.punishment.WipeCommand;
 import me.fckml.staffcore.commands.punishment.execute.*;
 import me.fckml.staffcore.commands.punishment.undo.*;
-import me.fckml.staffcore.commands.staff.*;
+import me.fckml.staffcore.commands.staff.AdminChatCommand;
+import me.fckml.staffcore.commands.staff.StaffChatCommand;
+import me.fckml.staffcore.commands.staff.StaffModeCommand;
+import me.fckml.staffcore.commands.staff.VanishCommand;
 import org.bukkit.Bukkit;
 import org.bukkit.command.CommandMap;
 import org.bukkit.command.defaults.BukkitCommand;
@@ -49,8 +52,6 @@ public class CommandManager {
 
         this.commands.add(new VanishCommand());
         this.commands.add(new StaffModeCommand());
-
-        this.commands.add(new FreezeCommand());
 
         this.commands.forEach(this::registerCommand);
     }

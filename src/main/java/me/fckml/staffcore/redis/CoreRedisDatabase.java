@@ -153,7 +153,6 @@ public class CoreRedisDatabase {
             try {
                 Jedis jedis = this.redisPool.getResource();
 
-                jedis.auth("PASSWORD HERE"); // REMOVE THIS LINE IN CASE THAT YOUR REDIS HAS NO PASSWORD
                 jedis.subscribe(this.jedisPubSub, "Core");
             } catch (Exception e) {
                 e.printStackTrace();

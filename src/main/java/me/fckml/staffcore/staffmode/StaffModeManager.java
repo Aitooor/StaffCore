@@ -207,36 +207,36 @@ public class StaffModeManager implements Listener {
                 return;
             }
             case SUGAR: {
-                if (player.getFlySpeed() == 0.2f) {
-                    player.setFlySpeed(0.4f);
-
-                    player.sendMessage(CC.translate("&bYour fly speed has been changed to &f" + player.getWalkSpeed() + "&b."));
-                    return;
-                }
-
-                if (player.getFlySpeed() == 0.4f) {
-                    player.setFlySpeed(0.6f);
-
-                    player.sendMessage(CC.translate("&bYour fly speed has been changed to &f" + player.getWalkSpeed() + "&b."));
-                    return;
-                }
-
-                if (player.getFlySpeed() == 0.6f) {
-                    player.setFlySpeed(0.8f);
+                if (player.getWalkSpeed() == 0.2f) {
+                    player.setWalkSpeed(0.4f);
 
                     player.sendMessage(CC.translate("&bYour walk speed has been changed to &f" + player.getWalkSpeed() + "&b."));
                     return;
                 }
 
-                if (player.getFlySpeed() == 0.8) {
-                    player.setFlySpeed(1.0f);
+                if (player.getWalkSpeed() == 0.4f) {
+                    player.setWalkSpeed(0.6f);
 
-                    player.sendMessage(CC.translate("&bYour fly speed has been changed to &f" + player.getWalkSpeed() + "&b."));
+                    player.sendMessage(CC.translate("&bYour walk speed has been changed to &f" + player.getWalkSpeed() + "&b."));
                     return;
                 }
 
-                player.setFlySpeed(0.2f);
-                player.sendMessage(CC.translate("&cYour fly speed has been restarted."));
+                if (player.getWalkSpeed() == 0.6f) {
+                    player.setWalkSpeed(0.8f);
+
+                    player.sendMessage(CC.translate("&bYour walk speed has been changed to &f" + player.getWalkSpeed() + "&b."));
+                    return;
+                }
+
+                if (player.getWalkSpeed() == 0.8) {
+                    player.setWalkSpeed(1.0f);
+
+                    player.sendMessage(CC.translate("&bYour walk speed has been changed to &f" + player.getWalkSpeed() + "&b."));
+                    return;
+                }
+
+                player.setWalkSpeed(0.2f);
+                player.sendMessage(CC.translate("&cYour walk speed has been restarted."));
                 return;
             }
             case CHEST: {

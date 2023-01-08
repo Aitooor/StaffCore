@@ -28,7 +28,7 @@ public class CoreMongoDatabase {
     public CoreMongoDatabase() {
         instance = this;
 
-        this.mongoClient = new MongoClient(new ServerAddress("127.0.0.1", 27017), MongoCredential.createCredential("root", "StaffCore", "asd".toCharArray()), MongoClientOptions.builder().build());
+        this.mongoClient = new MongoClient(new ServerAddress("127.0.0.1", 27017));
         this.mongoDatabase = this.mongoClient.getDatabase("StaffCore");
 
         this.grants = this.mongoDatabase.getCollection("grants");
