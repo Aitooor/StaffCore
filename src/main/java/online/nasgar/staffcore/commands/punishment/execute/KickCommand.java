@@ -43,7 +43,7 @@ public class KickCommand extends BaseCommand {
 
         if (target == null) {
             if (sender instanceof ConsoleCommandSender) {
-                sender.sendMessage(CC.translate("&cPlayer not found."));
+                sender.sendMessage(CC.translate("&cPlayer not found"));
                 return;
             }
 

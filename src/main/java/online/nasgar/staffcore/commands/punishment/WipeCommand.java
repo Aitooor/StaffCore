@@ -45,7 +45,7 @@ public class WipeCommand extends BaseCommand {
             type = PunishmentType.valueOf(args[0]);
         } catch (Exception e) {
             if (sender instanceof ConsoleCommandSender) {
-                sender.sendMessage(CC.translate("&cInvalid punishment type."));
+                sender.sendMessage(CC.translate("&cInvalid punishment type"));
                 return;
             }
 
@@ -73,7 +73,7 @@ public class WipeCommand extends BaseCommand {
         }
 
         if (sender instanceof ConsoleCommandSender) {
-            sender.sendMessage(CC.translate("&aA total of &e" + erasedPunishments + " &apunishments."));
+            sender.sendMessage(CC.translate("&aA total of &e" + erasedPunishments + " &apunishments"));
             return;
         }
 

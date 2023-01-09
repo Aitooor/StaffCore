@@ -59,7 +59,7 @@ public class StaffRollbackCommand extends BaseCommand {
         }
 
         if (sender instanceof ConsoleCommandSender) {
-            sender.sendMessage(CC.translate("&aA total of &e" + erasedPunishments + " &apunishments have been removed."));
+            sender.sendMessage(CC.translate("&aA total of &e" + erasedPunishments + " &apunishments have been removed"));
             return;
         }
 

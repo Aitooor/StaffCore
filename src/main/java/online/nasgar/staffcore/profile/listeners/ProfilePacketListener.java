@@ -23,7 +23,7 @@ public class ProfilePacketListener implements PacketListener {
             StaffCore.getInstance().getMessageHandler().getMany(player, "SERVER.JOINED").getContents().forEach(line -> player.sendMessage(CC.translate(line.replace("<server>", packet.getServer()).replace("<player>", packet.getName()))));
         }
 
-        Bukkit.getConsoleSender().sendMessage(CC.translate("&b[S] &3" + packet.getName() + " &7has &ajoined &7to &b" + packet.getServer() + "&7."));
+        Bukkit.getConsoleSender().sendMessage(CC.translate("&b[S] &3" + packet.getName() + " &7has &ajoined &7to &b" + packet.getServer() + "&7"));
     }
 
     @IncomingPacketHandler
@@ -35,7 +35,7 @@ public class ProfilePacketListener implements PacketListener {
             StaffCore.getInstance().getMessageHandler().getMany(player, "SERVER.LEFT").getContents().forEach(line -> player.sendMessage(CC.translate(line.replace("<server>", packet.getServer()).replace("<player>", packet.getName()))));
         }
 
-        Bukkit.getConsoleSender().sendMessage(CC.translate("&b[S] &3" + packet.getName() + " &7has &cleft &7left the network."));
+        Bukkit.getConsoleSender().sendMessage(CC.translate("&b[S] &3" + packet.getName() + " &7has &cleft &7left the network"));
     }
 
     @IncomingPacketHandler
@@ -47,7 +47,7 @@ public class ProfilePacketListener implements PacketListener {
             StaffCore.getInstance().getMessageHandler().getMany(player, "SERVER.SWITCHED").getContents().forEach(line -> player.sendMessage(CC.translate(line.replace("<newserver>", packet.getNewServer()).replace("<server>", packet.getServer()).replace("<player>", packet.getName()))));
         }
 
-        Bukkit.getConsoleSender().sendMessage(CC.translate("&b[S] &3" + packet.getName() + " &7has &7has &aswitched &7from &b" + packet.getServer() + " &7to &b" + packet.getNewServer() + "&7."));
+        Bukkit.getConsoleSender().sendMessage(CC.translate("&b[S] &3" + packet.getName() + " &7has &7has &aswitched &7from &b" + packet.getServer() + " &7to &b" + packet.getNewServer() + "&7"));
     }
 
     @IncomingPacketHandler

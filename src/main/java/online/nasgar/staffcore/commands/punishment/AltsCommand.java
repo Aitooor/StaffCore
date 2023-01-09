@@ -44,7 +44,7 @@ public class AltsCommand extends BaseCommand {
 
         if (sender instanceof ConsoleCommandSender) {
             if (targetProfile.getAlts().isEmpty()) {
-                sender.sendMessage(CC.translate("&cThat player has no alts."));
+                sender.sendMessage(CC.translate("&cThat player has no alts"));
                 return;
             }
 

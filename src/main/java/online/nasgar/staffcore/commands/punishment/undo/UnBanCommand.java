@@ -44,7 +44,7 @@ public class UnBanCommand extends BaseCommand {
 
         if (punishment == null) {
             if (sender instanceof ConsoleCommandSender) {
-                sender.sendMessage(CC.translate("&cThat player has no bans yet."));
+                sender.sendMessage(CC.translate("&cThat player has no bans yet"));
                 return;
             }
 

@@ -1,11 +1,11 @@
 SERVER:
-  JOINED: "&b[S] &3<player> &7has &ajoined &7to &d<server>&7."
-  LEFT: "&b[S] &3<player> &7has &cleft &7the network."
-  SWITCHED: "&b[S] &3<player> &7has &aswitched &7from &d<server> &7to &d<newserver>&7."
+  JOINED: "&8[&bS&8] &a<player> &7has &ajoined &7to &d<server>&7"
+  LEFT: "&8[&bS&8] &a<player> &7has &cleft &7the network"
+  SWITCHED: "&8[&bS&8] &a<player> &7has &eswitched &7from &a<server> &7to &d<newserver>&7"
 
 COMMAND:
-  NO_PERMISSION: "&cYou don't have enough permissions to run this command."
-  NO_PLAYER: "&cNo player found."
+  NO_PERMISSION: "&cYou don't have enough permissions to run this command"
+  NO_PLAYER: "&cNo player found"
 
 PUNISHMENT:
   REMOVED: "Removed"
@@ -16,12 +16,12 @@ PUNISHMENT:
   MINUTE_FORMAT: "Minute"
   SECONDS_FORMAT: "Second"
   BAN_USAGE: "&cUsage: /ban <player> [duration] <reason> [-s]"
-  BAN_ALREADY_BANNED: "&cThat player is already banned."
+  BAN_ALREADY_BANNED: "&cThat player is already banned"
   BAN_TEMPORARY_MESSAGE: "temporarily"
   BAN_PERMANENT_MESSAGE: "permanently"
   BAN_KICK_MESSAGE:
     - ""
-    - "&cYour account has been <context> banned &b&lNasgar &f&lNetwork."
+    - "&cYour account has been <context> banned &b&lNasgar &f&lNetwork"
     - ""
     - "&cBanned By: &f<added_by>"
     - "&cDuration: &f<duration>"
@@ -29,77 +29,77 @@ PUNISHMENT:
     - ""
     - "&cAppeal at: &fhttps://ds.nasgar.online/"
   BAN_PUBLIC_MESSAGE:
-    - "&a<banned> &7has been banned <context> by &b<added_by>."
+    - "&a<banned> &7has been banned <context> by &b<added_by>"
   BAN_SILENT_MESSAGE:
-    - "&7[Silent] &a<banned> &7has been banned <context> by &b<added_by>&a."
+    - "&7[Silent] &a<banned> &7has been banned <context> by &b<added_by>&a"
   BLACKLIST_USAGE: "&cUsage: /blacklist <player> <reason> [-s]"
-  BLACKLIST_ALREADY_BANNED: "&cThat player is already banned."
+  BLACKLIST_ALREADY_BANNED: "&cThat player is already banned"
   BLACKLIST_KICK_MESSAGE:
     - ""
-    - "&cYour account has been blacklisted from &b&lNasgar &f&lNetwork."
+    - "&cYour account has been blacklisted from &b&lNasgar &f&lNetwork"
     - ""
     - "&cBanned By: &f<added_by>"
     - "&cDuration: &f<duration>"
     - "&cReason: &f<reason>"
     - ""
-    - "&cThis type of punishment cannot be appealed."
+    - "&cThis type of punishment cannot be appealed"
   BLACKLIST_PUBLIC_MESSAGE:
-    - "&a<banned> &7has been blacklisted by &b<added_by>&a."
+    - "&a<banned> &7has been blacklisted by &b<added_by>&a"
   BLACKLIST_SILENT_MESSAGE:
-    - "&7[Silent] &a<banned> &7has been blacklisted by &b<added_by>&a."
+    - "&7[Silent] &a<banned> &7has been blacklisted by &b<added_by>&a"
   WARN_USAGE: "&cUsage: /warn <player> <reason> [-s]"
   WARN_MESSAGE:
-    - "&cYou have been warned."
+    - "&cYou have been warned"
     - "&cReason: &f<reason>"
-    - "&cDuration: &f7 days."
+    - "&cDuration: &f7 days"
   WARN_PUBLIC_MESSAGE:
-    - "&a<banned> &7has been warned by &b<added_by>&a."
+    - "&a<banned> &7has been warned by &b<added_by>&a"
   WARN_SILENT_MESSAGE:
-    - "&7[Silent] &a<banned> &7has been warned by &b<added_by>&a."
+    - "&7[Silent] &a<banned> &7has been warned by &b<added_by>&a"
   UNWARN_USAGE: "&cUsage: /unwarn <plaer> <reason> [-s]"
-  UNWARN_NO_WARNS_YET: "&cThis player has no warns yet."
+  UNWARN_NO_WARNS_YET: "&cThis player has no warns yet"
   UNWARN_MESSAGE:
-    - "&aA warning from your punishment history has been removed ^^."
+    - "&aA warning from your punishment history has been removed ^^"
   UNWARN_PUBLIC_MESSAGE:
-    - "&a<banned> &7has been unwarned by &b<added_by>."
+    - "&a<banned> &7has been unwarned by &b<added_by>"
   UNWARN_SILENT_MESSAGE:
-    - "&7[Silent] &a<banned> &7has been unwarned by &b<added_by>&a."
+    - "&7[Silent] &a<banned> &7has been unwarned by &b<added_by>&a"
   UNMUTE_USAGE: "&cUsage: /unmute <player> <reason> [-s]"
-  UNMUTE_NO_WARNS_YET: "&cThis player has no mutes yet."
+  UNMUTE_NO_WARNS_YET: "&cThis player has no mutes yet"
   UNMUTE_MESSAGE:
-    - "&aYou are able to use the chat again ^^."
+    - "&aYou are able to use the chat again ^^"
   UNMUTE_PUBLIC_MESSAGE:
-    - "&a<banned> &7has been unmuted by &b<added_by>&a."
+    - "&a<banned> &7has been unmuted by &b<added_by>&a"
   UNMUTE_SILENT_MESSAGE:
-    - "&7[Silent] &a<banned> &7has been unmuted by &b<added_by>&a."
+    - "&7[Silent] &a<banned> &7has been unmuted by &b<added_by>&a"
   UNBAN_USAGE: "&cUsage: /unban <player> <reason> [-s]"
-  UNBAN_NO_BANS_YET: "&cThis player has no bans yet."
+  UNBAN_NO_BANS_YET: "&cThis player has no bans yet"
   UNBAN_PUBLIC_MESSAGE:
-    - "&a<banned> &7has been unbanned by &b<added_by>&a."
+    - "&a<banned> &7has been unbanned by &b<added_by>&a"
   UNBAN_SILENT_MESSAGE:
-    - "&7[Oculto] &a<banned> &7has been unbanned by &b<added_by>&a."
+    - "&7[Oculto] &a<banned> &7has been unbanned by &b<added_by>&a"
   MUTE_USAGE: "&cUsage: /mute <player> <reason> [-s]"
   MUTE_MESSAGE:
     - "&cYou have been muted"
     - "&cReason: &f<reason>"
-    - "&cDuration: &f<duration>."
+    - "&cDuration: &f<duration>"
   MUTE_PUBLIC_MESSAGE:
-    - "&a<banned> &ahas been muted by &b<added_by>&a."
+    - "&a<banned> &ahas been muted by &b<added_by>&a"
   MUTE_SILENT_MESSAGE:
-    - "&7[Silent] &a<banned> &7has been muted by &b<added_by>&a."
+    - "&7[Silent] &a<banned> &7has been muted by &b<added_by>&a"
   KICK_USAGE: "&cUsage: /kick <player> <reason> [-s]"
-  KICK_NO_PLAYER: "&cJugador no encontrado."
+  KICK_NO_PLAYER: "&cJugador no encontrado"
   KICK_MESSAGE:
     - ""
-    - "&cYou have been kicked from &b&lNasgar &f&lNetwork."
+    - "&cYou have been kicked from &b&lNasgar &f&lNetwork"
     - ""
     - "&cKicked By: &f<added_by>"
     - "&cReason: &f<reason>"
     - ""
   KICK_PUBLIC_MESSAGE:
-    - "&a<banned> &ahave been kicked by &b<added_by>&a."
+    - "&a<banned> &ahave been kicked by &b<added_by>&a"
   KICK_SILENT_MESSAGE:
-    - "&7[Oculto] &e<banned> &ahave been kicked by &c<added_by>&a."
+    - "&7[Oculto] &e<banned> &ahave been kicked by &c<added_by>&a"
 
 ALTS:
   USAGE:
@@ -111,7 +111,7 @@ ALTS:
   ALT_NOT_MUTED_FORMAT: "&aNo Mutes"
   ALT_ONLINE: "&aOnline"
   ALT_OFFLINE: "&cOffline"
-  NO_ALTS: "&cThis player has no alts yet."
+  NO_ALTS: "&cThis player has no alts yet"
   ALT_MESSAGE:
     - ""
     - "&cAlt of player &a<player>"
@@ -121,34 +121,34 @@ ALTS:
 WIPE_PUNISHMENTS:
   USAGE:
     - "&cUsage: /wipepunishments <ban|blacklist|mute|warn|kick>"
-  INVALID_TYPE: "&cInvalid punishment type."
-  WIPED: "&aA total of &c<total> &apunishments."
+  INVALID_TYPE: "&cInvalid punishment type"
+  WIPED: "&aA total of &c<total> &apunishments"
 
 STAFF_ROLLBACK:
   USAGE:
     - "&cUsage: /staffrollback <player> <time>"
-  CLEARED_PUNISHMENTS: "&aA total of &c<total> &apunishments have been removed."
+  CLEARED_PUNISHMENTS: "&aA total of &c<total> &apunishments have been removed"
 
 FLY:
-  ENABLED: "&aFly enabled."
-  DISABLED: "&cFly disabled."
+  ENABLED: "&aFly enabled"
+  DISABLED: "&cFly disabled"
 
 CHAT:
-  STAFF_CHAT: "&8[&aSC&8] &7(&f<server>&7) &f<player>&7: &b<message>"
-  MOD_CHAT: "&8[&bMC&8] &7(&f<server>&7) &f<player>&7: &c<message>"
-  ADMIN_CHAT: "&8[&cAC&8] &7(&f<server>&7) &f<player>&7: &c<message>"
+  STAFF_CHAT: "&8[&aSC&8] &8(&7<server>&8) &f<player>&7: &a<message>"
+  MOD_CHAT: "&8[&bMC&8] &8(&7<server>&8) &f<player>&7: &b<message>"
+  ADMIN_CHAT: "&8[&cAC&8] &8(&7<server>&8) &f<player>&7: &c<message>"
 
 MOD_CHAT:
-  DISABLED: "&cSuccessfully disabled mod chat."
-  ENABLED: "&aSuccessfully enabled mod chat."
+  DISABLED: "&cSuccessfully disabled mod chat"
+  ENABLED: "&aSuccessfully enabled mod chat"
 
 ADMIN_CHAT:
-  DISABLED: "&cSuccessfully disabled admin chat."
-  ENABLED: "&aSuccessfully enabled adminchat."
+  DISABLED: "&cSuccessfully disabled admin chat"
+  ENABLED: "&aSuccessfully enabled adminchat"
 
 STAFF_CHAT:
-  DISABLED: "&cSuccessfully disabled staffchat."
-  ENABLED: "&aSuccessfully enabled staffchat."
+  DISABLED: "&cSuccessfully disabled staffchat"
+  ENABLED: "&aSuccessfully enabled staffchat"
 
 FREEZE:
   USAGE:
@@ -160,19 +160,19 @@ FREEZE:
     - "/m"
   FREEZE_MESSAGE:
     - "&7"
-    - "&b&lYOU HAVE BEEN FROZEN."
+    - "&c&lYOU HAVE BEEN FROZEN"
     - ""
-    - "&fFollow staff instructions."
-    - "&cLogging out: PERMANENT BAN."
+    - "&fFollow staff instructions"
+    - "&cLogging out: PERMANENT BAN"
     - ""
   UNFREEZE_MESSAGE:
     - "&7"
-    - "&c&lYOU HAVE BEEN UN-FROZEN."
+    - "&a&lYOU HAVE BEEN UN-FROZEN"
     - "&7"
   LOGGED_OUT:
-    - "&7(&bFreeze&7) &a<player> &chas logged out while frozen."
-  FREEZE_MESSAGE_STAFF: "&7(&bFreeze&7) &f<player> &7has been frozen by &b<staff>&b."
-  UNFREEZE_MESSAGE_STAFF: "&7(&bFreeze&7) &f<player> &7has been unfrozen by &b<staff>&b."
+    - "&7(&bFreeze&7) &a<player> &chas logged out while frozen"
+  FREEZE_MESSAGE_STAFF: "&7(&bFreeze&7) &f<player> &7has been frozen by &b<staff>&b"
+  UNFREEZE_MESSAGE_STAFF: "&7(&bFreeze&7) &f<player> &7has been unfrozen by &b<staff>&b"
   MESSAGE_WHEN:
     - "00:30"
     - "01:00"
@@ -196,15 +196,15 @@ FREEZE:
   FREEZE_TIMER_MESSAGE: "&7(&bFreeze&7) &a<player> &7is frozen. &7(Timer: <time>)"
 
 VANISH:
-  ENABLED: "&aVanish successfully enabled."
-  DISABLED: "&cVanish successfully disabled."
+  ENABLED: "&aVanish successfully enabled"
+  DISABLED: "&cVanish successfully disabled"
 
 STAFFMODE:
-  ENABLED: "&aStaffMode successfully enabled."
-  DISABLED: "&cStaffMode successfully disabled."
+  ENABLED: "&aStaffMode successfully enabled"
+  DISABLED: "&cStaffMode successfully disabled"
 
 SPEED:
-  RESET: "&aYour Fly Speed has been back to normal."
+  RESET: "&aYour Fly Speed has been back to normal"
   TO_10: "&aFly speed is now at: 10"
   TO_8: "&aFly speed is now at: 8"
   TO_6: "&aFly speed is now at: 6"

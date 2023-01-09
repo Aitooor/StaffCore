@@ -46,7 +46,7 @@ public class BanCommand extends BaseCommand {
 
         if (punishment != null) {
             if (sender instanceof ConsoleCommandSender) {
-                sender.sendMessage(CC.translate("&c" + target.getName() + " is already banned."));
+                sender.sendMessage(CC.translate("&c" + target.getName() + " is already banned"));
                 return;
             }
 

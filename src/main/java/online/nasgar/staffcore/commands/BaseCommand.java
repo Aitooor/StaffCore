@@ -76,7 +76,7 @@ public abstract class BaseCommand extends BukkitCommand {
         if (sender instanceof Player && this.getPermission() != null && !sender.hasPermission(this.getPermission())) {
             Player player = (Player) sender;
 
-            sender.sendMessage(CC.translate("&cYou don't have permissions."));
+            sender.sendMessage(CC.translate("&cYou don't have permissions"));
             return true;
         }
 

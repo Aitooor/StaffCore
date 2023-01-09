@@ -45,7 +45,7 @@ public class MuteCommand extends BaseCommand {
 
         if (punishment != null) {
             if (sender instanceof ConsoleCommandSender) {
-                sender.sendMessage(CC.translate("&c" + target.getName() + " is already muted."));
+                sender.sendMessage(CC.translate("&c" + target.getName() + " is already muted"));
                 return;
             }
 

@@ -44,7 +44,7 @@ public class UnBlacklistCommand extends BaseCommand {
 
         if (punishment == null) {
             if (sender instanceof ConsoleCommandSender) {
-                sender.sendMessage(CC.translate("&cThat player has no blacklists yet."));
+                sender.sendMessage(CC.translate("&cThat player has no blacklists yet"));
                 return;
             }
 

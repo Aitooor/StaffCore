@@ -43,7 +43,7 @@ public class UnWarnCommand extends BaseCommand {
 
         if (punishment == null) {
             if (sender instanceof ConsoleCommandSender) {
-                sender.sendMessage(CC.translate("&cThat player has no warns yet."));
+                sender.sendMessage(CC.translate("&cThat player has no warns yet"));
                 return;
             }
 

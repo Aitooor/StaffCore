@@ -28,7 +28,7 @@ public class FreezeCommand extends BaseCommand {
                 Player target = Bukkit.getPlayer(args[0]);
 
                 if (target == null) {
-                    sender.sendMessage(CC.translate("&cPlayer not found."));
+                    sender.sendMessage(CC.translate("&cPlayer not found"));
                     return;
                 }
 

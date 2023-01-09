@@ -43,7 +43,7 @@ public class UnMuteCommand extends BaseCommand {
 
         if (punishment == null) {
             if (sender instanceof ConsoleCommandSender) {
-                sender.sendMessage(CC.translate("&cThat player has no mutes yet."));
+                sender.sendMessage(CC.translate("&cThat player has no mutes yet"));
                 return;
             }
 

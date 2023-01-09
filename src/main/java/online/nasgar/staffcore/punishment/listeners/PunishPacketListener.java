@@ -33,8 +33,8 @@ public class PunishPacketListener implements PacketListener {
             } else if (punishment.getType() == PunishmentType.BLACKLIST) {
                 Tasks.runTask(() -> victim.kickPlayer(String.join("\n", this.getPunishmentTypeBlacklist(profile, punishment, senderName, staffName, StaffCore.getInstance().getMessageHandler().getMany(victim, "PUNISHMENT.BLACKLIST_KICK_MESSAGE").getContents()))));
             } else if (punishment.getType() == PunishmentType.WARN) {
-                victim.sendMessage(CC.translate("&cYou have been warned."));
-                victim.sendMessage(CC.translate("&cExpires in: &f7 days."));
+                victim.sendMessage(CC.translate("&cYou have been warned"));
+                victim.sendMessage(CC.translate("&cExpires in: &f7 days"));
                 victim.sendMessage(CC.translate("&cReason: &f" + punishment.getAddedReason()));
             }
         }
