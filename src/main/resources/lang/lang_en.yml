@@ -1,7 +1,7 @@
 SERVER:
-  JOINED: "&8[&bS&8] &a<player> &7has &ajoined &7to &d<server>&7"
-  LEFT: "&8[&bS&8] &a<player> &7has &cleft &7the network"
-  SWITCHED: "&8[&bS&8] &a<player> &7has &eswitched &7from &a<server> &7to &d<newserver>&7"
+  JOINED: "&8[&aS&8] &b<player> &7has &ajoined &7to &d<server>&7"
+  LEFT: "&8[&aS&8] &b<player> &7has &cleft &7the network"
+  SWITCHED: "&8[&aS&8] &b<player> &7has &eswitched &7from &a<server> &7to &d<newserver>&7"
 
 COMMAND:
   NO_PERMISSION: "&cYou don't have enough permissions to run this command"

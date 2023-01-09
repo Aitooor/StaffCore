@@ -1,7 +1,7 @@
 SERVER:
-  JOINED: "&8[&bS&8] &a<player> &7se a &aunido &7a &d<server>&7"
-  LEFT: "&8[&bS&8] &a<player> &7a &csalido &7de la network"
-  SWITCHED: "&8[&bS&8] &a<player> &7a &ecambiado &7de &e<server> &7a &d<newserver>&7"
+  JOINED: "&8[&aS&8] &b<player> &7se a &aunido &7a &d<server>&7"
+  LEFT: "&8[&aS&8] &b<player> &7a &csalido &7de la network"
+  SWITCHED: "&8[&aS&8] &b<player> &7a &ecambiado &7de &e<server> &7a &d<newserver>&7"
 
 COMMAND:
   NO_PERMISSION: "&cTu no tienes permiso para utilizar este comando, cuidado con lo que haces"
