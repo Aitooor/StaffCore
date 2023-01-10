@@ -134,21 +134,26 @@ FLY:
   DISABLED: "&cFly disabled"
 
 CHAT:
-  DONOR_CHAT: "&8[&fDC&8] &7(&f<server>&7) &f<player>&7: &f<message>"
-  STAFF_CHAT: "&8[&bSC&8] &7(&f<server>&7) &f<player>&7: &b<message>"
+  PREMIUM_CHAT: "&8[&eP&8] &7(&f<server>&7) &f<player>&7: &e<message>"
+  STAFF_CHAT: "&8[&aSC&8] &7(&f<server>&7) &f<player>&7: &a<message>"
+  MOD_CHAT: "&8[&bMC&8] &7(&f<server>&7) &f<player>&7: &b<message>"
   ADMIN_CHAT: "&8[&cAC&8] &7(&f<server>&7) &f<player>&7: &c<message>"
-
-DONATOR_CHAT:
-  DISABLED: "&cSuccessfully disabled donatorchat"
-  ENABLED: "&aSuccessfully enabled donatorchat"
 
 ADMIN_CHAT:
   DISABLED: "&cSuccessfully disabled admin chat"
-  ENABLED: "&aSuccessfully enabled adminchat"
+  ENABLED: "&aSuccessfully enabled admin chat"
+
+MOD_CHAT:
+  DISABLED: "&cSuccessfully disabled mod chat"
+  ENABLED: "&aSuccessfully enabled mod chat"
 
 STAFF_CHAT:
-  DISABLED: "&cSuccessfully disabled staffchat"
-  ENABLED: "&aSuccessfully enabled staffchat"
+  DISABLED: "&cSuccessfully disabled staff chat"
+  ENABLED: "&aSuccessfully enabled staff chat"
+
+PREMIUM_CHAT:
+  DISABLED: "&cSuccessfully disabled premium chat"
+  ENABLED: "&aSuccessfully enabled premium chat"
 
 FREEZE:
   USAGE:

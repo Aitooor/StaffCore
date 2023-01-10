@@ -137,6 +137,13 @@ public class ProfileListener implements Listener {
             return;
         }
 
+        if (profile.getChat() == ProfileChat.MOD_CHAT) {
+            event.setCancelled(true);
+
+            CoreRedisDatabase.getInstance().sendPacket(new ChatPacket(player.getName(), StaffCore.getInstance().getConfig().getString("SERVER.GROUP"), event.getMessage(), profile.getChat()));
+            return;
+        }
+
         if (profile.getChat() == ProfileChat.STAFF_CHAT) {
             event.setCancelled(true);
 
@@ -144,7 +151,7 @@ public class ProfileListener implements Listener {
             return;
         }
 
-        if (profile.getChat() == ProfileChat.DONOR_CHAT) {
+        if (profile.getChat() == ProfileChat.PREMIUM_CHAT) {
             event.setCancelled(true);
 
             CoreRedisDatabase.getInstance().sendPacket(new ChatPacket(player.getName(), StaffCore.getInstance().getConfig().getString("SERVER.GROUP"), event.getMessage(), profile.getChat()));

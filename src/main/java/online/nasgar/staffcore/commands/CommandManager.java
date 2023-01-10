@@ -29,7 +29,9 @@ public class CommandManager {
         this.commandMap = Bukkit.getCommandMap();
         this.commands = new ArrayList<>();
 
+        this.commands.add(new PremiumChatCommand());
         this.commands.add(new StaffChatCommand());
+        this.commands.add(new ModChatCommand());
         this.commands.add(new AdminChatCommand());
 
         this.commands.add(new BanCommand());
