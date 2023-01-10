@@ -3,7 +3,7 @@ main: online.nasgar.staffcore.StaffCore
 version: 1.0
 author: Fckml
 
-api-version: 1.13
+api-version: 1.17
 
 libraries:
   - org.mongodb:mongodb-driver:3.12.11
