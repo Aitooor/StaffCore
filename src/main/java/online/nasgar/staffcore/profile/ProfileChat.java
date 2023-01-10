@@ -3,6 +3,7 @@ package online.nasgar.staffcore.profile;
 public enum ProfileChat {
 
     NORMAL(""),
+    PREMIUM_CHAT("premiumchat"),
     STAFF_CHAT("staffchat"),
     MOD_CHAT("modchat"),
     ADMIN_CHAT("adminchat");
