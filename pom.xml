@@ -8,6 +8,13 @@
     <artifactId>StaffCore</artifactId>
     <version>1.19</version>
 
+    <distributionManagement>
+        <repository>
+            <id>nasgar-repo</id>
+            <url>https://repo.nasgar.online/releases/</url>
+        </repository>
+    </distributionManagement>
+
     <repositories>
         <repository>
             <id>papermc</id>
