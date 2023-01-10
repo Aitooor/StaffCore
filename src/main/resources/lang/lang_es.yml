@@ -165,14 +165,14 @@ FREEZE:
     - "/m"
   FREEZE_MESSAGE:
     - "&7"
-    - "&c&lHas sido congelado"
+    - "&c&lHAS SIDO CONGELADO"
     - ""
     - "&7Siga instrucciones del staff"
     - "&cDesconectarse: BAN PERMANENTE"
     - ""
   UNFREEZE_MESSAGE:
     - "&7"
-    - "&c&lHAS SIDO DESCONGELADO"
+    - "&a&lHAS SIDO DESCONGELADO"
     - "&7"
   LOGGED_OUT:
     - "&7(&bCongelado&7) &a<player> &cse desconectó mientras estaba congelado"

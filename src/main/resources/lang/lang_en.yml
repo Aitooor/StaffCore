@@ -165,14 +165,14 @@ FREEZE:
     - "/m"
   FREEZE_MESSAGE:
     - "&7"
-    - "&b&lYOU HAVE BEEN FROZEN"
+    - "&c&lYOU HAVE BEEN FROZEN"
     - ""
     - "&fFollow staff instructions"
     - "&cLogging out: PERMANENT BAN"
     - ""
   UNFREEZE_MESSAGE:
     - "&7"
-    - "&c&lYOU HAVE BEEN UN-FROZEN"
+    - "&a&lYOU HAVE BEEN UN-FROZEN"
     - "&7"
   LOGGED_OUT:
     - "&7(&bFreeze&7) &a<player> &chas logged out while frozen"
