@@ -13,38 +13,3 @@ MONGO:
 
 SERVER:
   GROUP: Server-1
-
-PUNISHMENT:
-  PUNISH_SELECTOR_MENU:
-    TITLE: "&cSelect a type of punishment"
-    SLOTS: 27
-    BUTTONS:
-      BAN:
-        TITLE: "&eBans"
-        MATERIAL: BEDROCK
-        DATA: 0
-        TYPE: BAN
-        LORE:
-          - "&e"
-  PUNISH_MENU:
-    TITLE: "&cPunishments - <total>"
-    SLOTS: 27
-    BUTTON:
-      TITLE: "&e<punishment_type>"
-      MATERIAL: DIAMOND
-      DATA: 0
-      LORE:
-        - "&7&m-----------------------"
-        - "&eAdded by: &7<banned_by>"
-        - "  "
-        - "&eDate: &7<date>"
-        - "&eReason: &7<reason>"
-        - "&7&m-----------------------"
-      EXPIRED_LORE:
-        - "&ePunishment Expired."
-        - "&7&m-----------------------"
-      REMOVED_LORE:
-        - "&eRemoved by: &7<removed_by>"
-        - "&eDate: &7<removed_date>"
-        - "&eReason: &7<removed_reason>"
-        - "&7&m-----------------------"
