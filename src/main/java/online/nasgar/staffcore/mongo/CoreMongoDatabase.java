@@ -21,9 +21,6 @@ public class CoreMongoDatabase {
     private MongoClient mongoClient;
     private MongoDatabase mongoDatabase;
 
-    private MongoCollection<Document> grants;
-    private MongoCollection<Document> ranks;
-    private MongoCollection<Document> tags;
     private MongoCollection<Document> profiles;
     private MongoCollection<Document> punishments;
 
@@ -45,9 +42,6 @@ public class CoreMongoDatabase {
                 MongoClientOptions.builder().build());
         this.mongoDatabase = this.mongoClient.getDatabase(database);
 
-        this.grants = this.mongoDatabase.getCollection("grants");
-        this.ranks = this.mongoDatabase.getCollection("ranks");
-        this.tags = this.mongoDatabase.getCollection("tags");
         this.profiles = this.mongoDatabase.getCollection("profiles");
         this.punishments = this.mongoDatabase.getCollection("punishments");
     }
